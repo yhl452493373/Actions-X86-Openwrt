@@ -1,0 +1,72 @@
+#!/bin/bash
+
+#重新配置nginx，不强制使用https
+uci -q delete nginx._lan
+uci -q delete nginx._redirect2ssl
+
+uci -q set nginx._lan=server
+uci -q set nginx._lan.server_name='_lan'
+uci -q set nginx._lan.access_log='off; # logd openwrt'
+uci -q add_list nginx._lan.listen='80 default_server'
+uci -q add_list nginx._lan.listen='[::]:80 default_server'
+uci -q add_list nginx._lan.include='restrict_locally'
+uci -q add_list nginx._lan.include='conf.d/*.locations'
+
+uci -q set nginx._ssl=server
+uci -q set nginx._ssl.server_name='_ssl'
+uci -q set nginx._ssl.uci_manage_ssl='self-signed'
+uci -q set nginx._ssl.access_log='off; # logd openwrt'
+uci -q set nginx._ssl.ssl_certificate='/etc/nginx/conf.d/_lan.crt'
+uci -q set nginx._ssl.ssl_certificate_key='/etc/nginx/conf.d/_lan.key'
+uci -q set nginx._ssl.ssl_session_cache='shared:SSL:32k'
+uci -q set nginx._ssl.ssl_session_timeout='64m'
+uci -q add_list nginx._ssl.listen='443 ssl'
+uci -q add_list nginx._ssl.listen='[::]:443 ssl'
+uci -q add_list nginx._ssl.include='restrict_locally'
+uci -q add_list nginx._ssl.include='conf.d/*.locations'
+uci commit nginx
+
+#修改主题
+uci -q set luci.main.mediaurlbase=/luci-static/argon
+uci commit luci
+
+#修改默认系统设置
+#修改时区
+uci -q set system.@system[0].timezone='CST-8'
+uci -q set system.@system[0].zonename='Asia/Shanghai'
+#删除默认ntp服务器
+uci -q delete system.ntp.server
+#增加ntp服务器
+uci -q add_list system.ntp.server=ntp.ntsc.ac.cn
+uci -q add_list system.ntp.server=ntp.aliyun.com
+uci -q add_list system.ntp.server=cn.ntp.org.cn
+uci commit system
+
+#修改防火墙，允许WAN口入栈和转发
+#uci -q set firewall.@defaults[0].output='ACCEPT'
+#uci -q set firewall.@defaults[0].input='ACCEPT'
+#uci -q set firewall.@defaults[0].forward='ACCEPT'
+#uci -q set firewall.@zone[1].output='ACCEPT'
+#uci -q set firewall.@zone[1].input='ACCEPT'
+#uci -q set firewall.@zone[1].forward='ACCEPT'
+#uci commit firewall
+
+#ttyd网页终端允许wan口访问
+#uci -q delete ttyd.@ttyd[0].interface
+#uci commit ttyd
+
+#openclash允许wan口连接代理端口
+#uci -q set openclash.config.intranet_allowed='0'
+uci commit openclash
+
+#NPS内网穿透服务
+uci -q set npc.config.protocol='tcp'
+uci -q set npc.config.compress='1'
+uci -q set npc.config.crypt='1'
+uci -q set npc.config.log_level='4'
+uci -q set npc.config.auto_reconnection='true'
+uci -q set npc.config.enabled='0'
+uci -q set npc.config.server_addr=''
+uci -q set npc.config.server_port=''
+uci -q set npc.config.vkey=''
+uci commit npc
