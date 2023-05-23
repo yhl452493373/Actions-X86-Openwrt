@@ -7,25 +7,25 @@
 # Blog: https://p3terx.com
 #=================================================
 
-#修复netfilter在linux 6.1.x上无法编译问题
-sed -i 's/CONFIG_NF_FLOW_TABLE_IPV4 \\/CONFIG_NF_FLOW_TABLE_IPV4@lt6.1 \\/g' package/kernel/linux/modules/netfilter.mk
-sed -i 's/CONFIG_NF_FLOW_TABLE_IPV6 \\/CONFIG_NF_FLOW_TABLE_IPV6@lt6.1 \\/g' package/kernel/linux/modules/netfilter.mk
-sed -i 's/$(LINUX_DIR)\/net\/ipv4\/netfilter\/nf_flow_table_ipv4.ko \\/$(LINUX_DIR)\/net\/ipv4\/netfilter\/nf_flow_table_ipv4.ko@lt6.1 \\/g' package/kernel/linux/modules/netfilter.mk
-sed -i 's/$(LINUX_DIR)\/net\/ipv6\/netfilter\/nf_flow_table_ipv6.ko \\/$(LINUX_DIR)\/net\/ipv6\/netfilter\/nf_flow_table_ipv6.ko@lt6.1 \\/g' package/kernel/linux/modules/netfilter.mk
+#删除自带的更新
+sed -i '/luci-app-attendedsysupgrade/d' feeds/luci/collections/luci/Makefile
+
+# 删除可能冲突的包
+rm -rf package/feeds/luci/luci-theme-argon
+rm -rf package/feeds/luci/luci-app-openclash
 
 #调整软件在菜单中的名称
 #luci-app-upnp
-sed -i 's/msgstr "UPnP"/msgstr "即插即用"/g' feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
-sed -i 's/msgstr "通用即插即用（UPnP）"/msgstr "即插即用（UPnP）"/g' feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
-#luci-app-qos
-sed -i 's/msgstr "QoS"/msgstr "服务质量"/g' feeds/luci/applications/luci-app-qos/po/zh-cn/qos.po
+sed -i 's/msgstr "UPnP"/msgstr "即插即用"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+sed -i 's/msgstr "通用即插即用（UPnP）"/msgstr "即插即用（UPnP）"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+#luci-app-nft-qos
+sed -i 's/msgstr "QoS over Nftables"/msgstr "服务质量"/g' feeds/luci/applications/luci-app-nft-qos/po/zh_Hans/nft-qos.po
 #luci-app-ttyd
-sed -i 's/msgstr "TTYD 终端"/msgstr "网页终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh-cn/terminal.po
-
+sed -i 's/msgstr "终端"/msgstr "网页终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 #luci-app-openclash
 sed -i 's/msgstr "OpenClash"/msgstr "科学上网"/g' package/luci-app-openclash/luci-app-openclash/po/zh-cn/openclash.zh-cn.po
 #luci-app-npc
-sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "内网穿透"\n' package/luci-app-npc/po/zh-cn/npc.po
+sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "内网穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
 
   
 # 修改LAN口默认IP

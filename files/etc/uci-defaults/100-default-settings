@@ -1,17 +1,17 @@
 #!/bin/bash
+# 去掉源签名认证
+sed -i 's/option check_signature/#option check_signature/g' /etc/opkg.conf
+# 替换为腾讯源
+sed -i 's/downloads.openwrt.org/mirrors.cloud.tencent.com\/openwrt/g' /etc/opkg/distfeeds.conf
+# 增加自定义源。如果有需要，可以在这里加
+#echo 'src/gz kmods https://op.supes.top/packages/x86_64/kmods/5.15.31 ' >> /etc/opkg/customfeeds.conf
 
 #重新配置nginx，不强制使用https
 uci -q delete nginx._lan
 uci -q delete nginx._redirect2ssl
-
 uci -q set nginx._lan=server
 uci -q set nginx._lan.server_name='_lan'
 uci -q set nginx._lan.access_log='off; # logd openwrt'
-uci -q add_list nginx._lan.listen='80 default_server'
-uci -q add_list nginx._lan.listen='[::]:80 default_server'
-uci -q add_list nginx._lan.include='restrict_locally'
-uci -q add_list nginx._lan.include='conf.d/*.locations'
-
 uci -q set nginx._ssl=server
 uci -q set nginx._ssl.server_name='_ssl'
 uci -q set nginx._ssl.uci_manage_ssl='self-signed'
@@ -20,8 +20,12 @@ uci -q set nginx._ssl.ssl_certificate='/etc/nginx/conf.d/_lan.crt'
 uci -q set nginx._ssl.ssl_certificate_key='/etc/nginx/conf.d/_lan.key'
 uci -q set nginx._ssl.ssl_session_cache='shared:SSL:32k'
 uci -q set nginx._ssl.ssl_session_timeout='64m'
+uci -q add_list nginx._lan.listen='80 default_server'
+uci -q add_list nginx._lan.listen='[::]:80 default_server'
 uci -q add_list nginx._ssl.listen='443 ssl'
 uci -q add_list nginx._ssl.listen='[::]:443 ssl'
+uci -q add_list nginx._lan.include='restrict_locally'
+uci -q add_list nginx._lan.include='conf.d/*.locations'
 uci -q add_list nginx._ssl.include='restrict_locally'
 uci -q add_list nginx._ssl.include='conf.d/*.locations'
 uci commit nginx
