@@ -2,9 +2,7 @@
 
 Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
-### 每周六早上自动编译Openwrt最新代码。编译后系统主题为argon，去除了openwrt部分默认选中的软件，同时nginx去除http自动转https，编译分支为
-
-***`master`*** ，即最新代码
+### 每周六早上自动编译Openwrt最新代码。编译后系统主题为argon，去除了openwrt部分默认选中的软件，同时nginx去除http自动转https，编译分支为`master` ，即最新代码
 
 ### 额外包含以下软件
 
