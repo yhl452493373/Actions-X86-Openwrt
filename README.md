@@ -18,14 +18,15 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 + luci-app-ttyd(TTYD终端)
 + luci-theme-argon(argon主题)
 
-### 基本信息：
+### 基本信息
 
 + 默认密码：无
 + 默认IP：`192.168.2.1`
-+ 默认WAN口：第一个网卡接口
++ 默认WAN口：第1个网卡接口
 + 默认LAN口：第2、3、4个接口
 
 如果你想修改指定网口为WAN口，需要自行修改[files/etc/config/network](files/etc/config/network)中`config interface 'wan'`下的网卡接口
+
 如果你接口超过4个，需要自行修改[files/etc/config/network](files/etc/config/network)中`option name 'br-lan'`下的网卡接口
 
 ### 云编译需要[在此](https://github.com/settings/tokens)生成`Fine-grained personal access tokens`，做如下设置：
@@ -39,8 +40,7 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
     + Environments:`Read and write`
     + Variables:`Read and write`
 
-以上操作生成token后，把token的值复制，然后依次点击击项目的`Settings`-`Secrets and variables`-`Actions`-`New repository secret`
-，之后填写内容：
+以上操作生成token后，把token的值复制，然后依次点击击项目的`Settings`-`Secrets and variables`-`Actions`-`New repository secret`，之后填写内容：
 
 + Name:`OPENWRT_TOKEN`
 + Secret:`上面操作得到的Token的值`
