@@ -13,7 +13,6 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 + luci-app-autoreboot(定时重启)
 + luci-app-poweroff(关机)
 + luci-app-firewall(防火墙)
-+ luci-app-nlbwmon(网络监控)
 + luci-app-nft-qos(服务质量)
 + luci-app-ttyd(TTYD终端)
 + luci-theme-argon(argon主题)
