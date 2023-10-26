@@ -76,8 +76,7 @@ env:
 
 jobs:
   build:
-#    runs-on: ubuntu-22.04
-    runs-on: self-hosted
+    runs-on: ubuntu-22.04
     steps:
       - name: 检出项目代码
         uses: actions/checkout@main
