@@ -14,6 +14,8 @@ config device
         list ports 'eth1'
         list ports 'eth2'
         list ports 'eth3'
+        list ports 'eth4'
+        list ports 'eth5'
 
 config interface 'lan'
         option device 'br-lan'
