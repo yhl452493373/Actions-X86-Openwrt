@@ -54,13 +54,13 @@ if [[ "${ENABLE_FIREWALL}" == "false" ]]; then
 fi
 
 # 如果启用npc，进行相应配置
-if [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; then
-  sed -i "s/uci -q set npc.config.protocol='tcp'/uci -q set npc.config.protocol='"${NPC_PROTOCOL}"'/g" files/etc/uci-defaults/100-default-settings
-  sed -i "s/uci -q set npc.config.enabled='0'/uci -q set npc.config.enabled='1'/g" files/etc/uci-defaults/100-default-settings
-  sed -i "s/uci -q set npc.config.server_addr=''/uci -q set npc.config.server_addr='"${NPC_SERVER}"'/g" files/etc/uci-defaults/100-default-settings
-  sed -i "s/uci -q set npc.config.server_port=''/uci -q set npc.config.server_port='"${NPC_PORT}"'/g" files/etc/uci-defaults/100-default-settings
-  sed -i "s/uci -q set npc.config.vkey=''/uci -q set npc.config.vkey='"${NPC_VKEY}"'/g" files/etc/uci-defaults/100-default-settings
-fi
+#if [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; then
+#  sed -i "s/uci -q set npc.config.protocol='tcp'/uci -q set npc.config.protocol='"${NPC_PROTOCOL}"'/g" files/etc/uci-defaults/100-default-settings
+#  sed -i "s/uci -q set npc.config.enabled='0'/uci -q set npc.config.enabled='1'/g" files/etc/uci-defaults/100-default-settings
+#  sed -i "s/uci -q set npc.config.server_addr=''/uci -q set npc.config.server_addr='"${NPC_SERVER}"'/g" files/etc/uci-defaults/100-default-settings
+#  sed -i "s/uci -q set npc.config.server_port=''/uci -q set npc.config.server_port='"${NPC_PORT}"'/g" files/etc/uci-defaults/100-default-settings
+#  sed -i "s/uci -q set npc.config.vkey=''/uci -q set npc.config.vkey='"${NPC_VKEY}"'/g" files/etc/uci-defaults/100-default-settings
+#fi
 
 # 修改编译信息
 sed -i 's/%D %V, %C/%D %V, %C, Build by YangHuanglin/g' package/base-files/files/etc/banner
