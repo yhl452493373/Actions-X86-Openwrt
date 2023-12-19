@@ -17,7 +17,8 @@
 #PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # argon主题
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+#git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone https://github.com/yhl452493373/luci-theme-argon.git package/luci-theme-argon
 
 # 高级设置
 git clone https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
