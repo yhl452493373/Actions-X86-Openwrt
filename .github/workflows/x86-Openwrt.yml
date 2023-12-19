@@ -52,26 +52,26 @@ on:
         description: 'WAN口网关'
         required: false
         default: ''
-      npc-protocol:
-        description: 'NPS服务端通信协议'
-        required: false
-        default: 'tcp'
-        type: choice
-        options:
-          - 'tcp'
-          - 'kcp'
-      npc-server:
-        description: 'NPS服务端地址'
-        required: false
-        default: ''
-      npc-port:
-        description: 'NPS服务端端口'
-        required: false
-        default: ''
-      npc-vkey:
-        description: 'NPS服务端密钥'
-        required: false
-        default: ''
+#      npc-protocol:
+#        description: 'NPS服务端通信协议'
+#        required: false
+#        default: 'tcp'
+#        type: choice
+#        options:
+#          - 'tcp'
+#          - 'kcp'
+#      npc-server:
+#        description: 'NPS服务端地址'
+#        required: false
+#        default: ''
+#      npc-port:
+#        description: 'NPS服务端端口'
+#        required: false
+#        default: ''
+#      npc-vkey:
+#        description: 'NPS服务端密钥'
+#        required: false
+#        default: ''
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: master
