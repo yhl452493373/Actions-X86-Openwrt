@@ -25,7 +25,7 @@ sed -i 's/msgstr "终端"/msgstr "网页终端"/g' feeds/luci/applications/luci-
 #luci-app-openclash
 sed -i 's/msgstr "OpenClash"/msgstr "科学上网"/g' package/luci-app-openclash/luci-app-openclash/po/zh-cn/openclash.zh-cn.po
 #luci-app-npc
-sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
+#sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
 #luci-app-frpc
 sed -i 's/msgstr "frp 客户端"/msgstr "FRP穿透"/g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
   
