@@ -22,11 +22,11 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 + 默认密码：无
 + 默认IP：`192.168.2.1`
 + 默认WAN口：第1个网卡接口
-+ 默认LAN口：第2、3、4个接口
++ 默认LAN口：第2、3、4、5、6个接口
 
 如果你想修改指定网口为WAN口，需要自行修改[files/etc/config/network](files/etc/config/network)中`config interface 'wan'`下的网卡接口
 
-如果你接口超过4个，需要自行修改[files/etc/config/network](files/etc/config/network)中`option name 'br-lan'`下的网卡接口
+如果你接口超过6个，需要自行修改[files/etc/config/network](files/etc/config/network)中`option name 'br-lan'`下的网卡接口
 
 ### 云编译需要[在此](https://github.com/settings/tokens)生成`Fine-grained personal access tokens`，做如下设置：
 
