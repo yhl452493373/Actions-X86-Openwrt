@@ -90,11 +90,11 @@ wget -qO- https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip
 wget -qO- https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat > files/etc/openclash/GeoSite.dat
 
 # 创建npc的二进制文件所在路径
-mkdir -p files/usr/bin
+#mkdir -p files/usr/bin
 # 设置NPC下载地址变量，只取第一条记录，即最新的
 # 从github上releases下载
-NPC_URL=$( curl -sL https://api.github.com/repos/ehang-io/nps/releases | grep /linux_amd64_client | awk -F '"' '{print $4}' | awk 'NR==1{print}' )
+#NPC_URL=$( curl -sL https://api.github.com/repos/ehang-io/nps/releases | grep /linux_amd64_client | awk -F '"' '{print $4}' | awk 'NR==1{print}' )
 # 下载并解压其中的根目录下名为npc的执行文件
-wget -qO- $NPC_URL | tar xOvz npc > files/usr/bin/npc
+#wget -qO- $NPC_URL | tar xOvz npc > files/usr/bin/npc
 # 给npc二进制文件增加执行权限
-chmod +x files/usr/bin/npc
+#chmod +x files/usr/bin/npc
