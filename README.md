@@ -7,6 +7,7 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 ### 额外包含以下软件
 
 + luci-app-openclash(科学上网)
++ luci-app-npc(内网穿透)
 + luci-app-frp(内网穿透)
 + luci-app-upnp(即插即用)
 + luci-app-samba4(网络共享)
