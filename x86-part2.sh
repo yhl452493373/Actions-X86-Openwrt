@@ -27,7 +27,7 @@ sed -i 's/msgstr "OpenClash"/msgstr "科学上网"/g' package/luci-app-openclash
 #luci-app-npc
 sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
 #luci-app-frpc
-sed -i 's/msgstr "frp 客户端"/msgstr "FRP穿透"/g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
+#sed -i 's/msgstr "frp 客户端"/msgstr "FRP穿透"/g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
   
 # 修改LAN口默认IP
 if [[ "${LAN_IP}" != "" ]]; then
