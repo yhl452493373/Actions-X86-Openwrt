@@ -24,8 +24,8 @@ git clone https://github.com/yhl452493373/luci-theme-argon.git package/luci-them
 git clone https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
 
 # NPS内网穿透的客户端NPC
-#git clone https://github.com/yhl452493373/npc.git package/npc
-#git clone https://github.com/yhl452493373/luci-app-npc.git package/luci-app-npc
+git clone https://github.com/yhl452493373/npc.git package/npc
+git clone https://github.com/yhl452493373/luci-app-npc.git package/luci-app-npc
 
 # OpenClash，此处使用开发版
 git clone -b dev --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash

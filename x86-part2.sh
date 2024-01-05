@@ -25,7 +25,7 @@ sed -i 's/msgstr "终端"/msgstr "网页终端"/g' feeds/luci/applications/luci-
 #luci-app-openclash
 sed -i 's/msgstr "OpenClash"/msgstr "科学上网"/g' package/luci-app-openclash/luci-app-openclash/po/zh-cn/openclash.zh-cn.po
 #luci-app-npc
-#sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
+sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
 #luci-app-frpc
 sed -i 's/msgstr "frp 客户端"/msgstr "FRP穿透"/g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
   
@@ -60,13 +60,13 @@ if [[ "${WAN_ETH}" != "" && "${WAN_ETH}" != "eth0" ]]; then
 fi
 
 # 如果启用npc，进行相应配置
-#if [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; then
-#  sed -i "s/uci -q set npc.config.protocol='tcp'/uci -q set npc.config.protocol='"${NPC_PROTOCOL}"'/g" files/etc/uci-defaults/100-default-settings
-#  sed -i "s/uci -q set npc.config.enabled='0'/uci -q set npc.config.enabled='1'/g" files/etc/uci-defaults/100-default-settings
-#  sed -i "s/uci -q set npc.config.server_addr=''/uci -q set npc.config.server_addr='"${NPC_SERVER}"'/g" files/etc/uci-defaults/100-default-settings
-#  sed -i "s/uci -q set npc.config.server_port=''/uci -q set npc.config.server_port='"${NPC_PORT}"'/g" files/etc/uci-defaults/100-default-settings
-#  sed -i "s/uci -q set npc.config.vkey=''/uci -q set npc.config.vkey='"${NPC_VKEY}"'/g" files/etc/uci-defaults/100-default-settings
-#fi
+if [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; then
+  sed -i "s/uci -q set npc.config.protocol='tcp'/uci -q set npc.config.protocol='"${NPC_PROTOCOL}"'/g" files/etc/uci-defaults/100-default-settings
+  sed -i "s/uci -q set npc.config.enabled='0'/uci -q set npc.config.enabled='1'/g" files/etc/uci-defaults/100-default-settings
+  sed -i "s/uci -q set npc.config.server_addr=''/uci -q set npc.config.server_addr='"${NPC_SERVER}"'/g" files/etc/uci-defaults/100-default-settings
+  sed -i "s/uci -q set npc.config.server_port=''/uci -q set npc.config.server_port='"${NPC_PORT}"'/g" files/etc/uci-defaults/100-default-settings
+  sed -i "s/uci -q set npc.config.vkey=''/uci -q set npc.config.vkey='"${NPC_VKEY}"'/g" files/etc/uci-defaults/100-default-settings
+fi
 
 # 修改编译信息
 sed -i 's/%D %V, %C/%D %V, %C, Build by YangHuanglin/g' package/base-files/files/etc/banner
@@ -90,11 +90,11 @@ wget -qO- https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip
 wget -qO- https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat > files/etc/openclash/GeoSite.dat
 
 # 创建npc的二进制文件所在路径
-#mkdir -p files/usr/bin
+mkdir -p files/usr/bin
 # 设置NPC下载地址变量，只取第一条记录，即最新的
 # 从github上releases下载
-#NPC_URL=$( curl -sL https://api.github.com/repos/ehang-io/nps/releases | grep /linux_amd64_client | awk -F '"' '{print $4}' | awk 'NR==1{print}' )
+NPC_URL=$( curl -sL https://api.github.com/repos/ehang-io/nps/releases | grep /linux_amd64_client | awk -F '"' '{print $4}' | awk 'NR==1{print}' )
 # 下载并解压其中的根目录下名为npc的执行文件
-#wget -qO- $NPC_URL | tar xOvz npc > files/usr/bin/npc
+wget -qO- $NPC_URL | tar xOvz npc > files/usr/bin/npc
 # 给npc二进制文件增加执行权限
-#chmod +x files/usr/bin/npc
+chmod +x files/usr/bin/npc

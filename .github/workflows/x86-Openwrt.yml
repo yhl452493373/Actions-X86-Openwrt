@@ -52,26 +52,26 @@ on:
         description: 'WAN口网关'
         required: false
         default: ''
-#      npc-protocol:
-#        description: 'NPS服务端通信协议'
-#        required: false
-#        default: 'tcp'
-#        type: choice
-#        options:
-#          - 'tcp'
-#          - 'kcp'
-#      npc-server:
-#        description: 'NPS服务端地址'
-#        required: false
-#        default: ''
-#      npc-port:
-#        description: 'NPS服务端端口'
-#        required: false
-#        default: ''
-#      npc-vkey:
-#        description: 'NPS服务端密钥'
-#        required: false
-#        default: ''
+      npc-protocol:
+        description: 'NPS服务端通信协议'
+        required: false
+        default: 'tcp'
+        type: choice
+        options:
+          - 'tcp'
+          - 'kcp'
+      npc-server:
+        description: 'NPS服务端地址'
+        required: false
+        default: ''
+      npc-port:
+        description: 'NPS服务端端口'
+        required: false
+        default: ''
+      npc-vkey:
+        description: 'NPS服务端密钥'
+        required: false
+        default: ''
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: master
@@ -166,6 +166,10 @@ jobs:
           WAN_NETMASK: ${{github.event.inputs.wan-netmask}}
           WAN_GATEWAY: ${{github.event.inputs.wan-gateway}}
           WAN_ETH: ${{github.event.inputs.wan-eth}}
+          NPC_PROTOCOL: ${{github.event.inputs.npc-protocol}}
+          NPC_SERVER: ${{github.event.inputs.npc-server}}
+          NPC_PORT: ${{github.event.inputs.npc-port}}
+          NPC_VKEY: ${{github.event.inputs.npc-vkey}}
         run: |
           echo Start executing script...
           chmod +x $DIY_P2_SH
@@ -232,6 +236,10 @@ jobs:
           WAN_NETMASK: ${{github.event.inputs.wan-netmask}}
           WAN_GATEWAY: ${{github.event.inputs.wan-gateway}}
           WAN_ETH: ${{github.event.inputs.wan-eth}}
+          NPC_PROTOCOL: ${{github.event.inputs.npc-protocol}}
+          NPC_SERVER: ${{github.event.inputs.npc-server}}
+          NPC_PORT: ${{github.event.inputs.npc-port}}
+          NPC_VKEY: ${{github.event.inputs.npc-vkey}}
         run: |
           LAN_PREFIX=""
           if [[ "${LAN_IP}" != "" ]]; then
@@ -242,7 +250,7 @@ jobs:
             FIREWALL_TEXT="-firewall"
           fi
           CUSTOMIZE_TEXT=""
-          if [[ "${WAN_IP}" != "" && "${WAN_NETMASK}" != "" && "${WAN_GATEWAY}" != "" ]]; then
+          if [[ "${WAN_IP}" != "" && "${WAN_NETMASK}" != "" && "${WAN_GATEWAY}" != "" ]] || [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; then
             CUSTOMIZE_TEXT="-customize"
           fi
           WAN_ETH_TEXT=""
