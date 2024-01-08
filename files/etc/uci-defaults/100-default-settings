@@ -78,13 +78,13 @@ uci commit dhcp
 uci commit openclash
 
 #NPS内网穿透服务
-#uci -q set npc.config.protocol='tcp'
-#uci -q set npc.config.compress='1'
-#uci -q set npc.config.crypt='1'
-#uci -q set npc.config.log_level='4'
-#uci -q set npc.config.auto_reconnection='true'
-#uci -q set npc.config.enabled='0'
-#uci -q set npc.config.server_addr=''
-#uci -q set npc.config.server_port=''
-#uci -q set npc.config.vkey=''
-#uci commit npc
+uci -q set npc.config.protocol='tcp'
+uci -q set npc.config.compress='1'
+uci -q set npc.config.crypt='1'
+uci -q set npc.config.log_level='4'
+uci -q set npc.config.auto_reconnection='true'
+uci -q set npc.config.enabled='0'
+uci -q set npc.config.server_addr=''
+uci -q set npc.config.server_port=''
+uci -q set npc.config.vkey=''
+uci commit npc
