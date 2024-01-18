@@ -43,4 +43,5 @@ git clone https://github.com/yhl452493373/openwrt-packages.git package/my-packag
 mv package/my-packages/luci-app-autoreboot/po/zh-cn package/my-packages/luci-app-autoreboot/po/zh_Hans
 
 # 自己固件中需要的驱动
-git clone https://github.com/yhl452493373/openwrt-driver.git package/my-driver
+git clone https://github.com/yhl452493373/openwrt-driver.git
+cp -r openwrt-driver/* package/
