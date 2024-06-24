@@ -86,7 +86,7 @@ wget -qO- $CLASH_META_URL | tar xOvz > files/etc/openclash/core/clash_meta
 # 给Clash二进制文件增加执行权限
 chmod +x files/etc/openclash/core/clash*
 # 下载默认IP相关数据
-wget -qO- https://cdn.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/lite/Country.mmdb > files/etc/openclash/Country.mmdb
+wget -qO- https://cdn.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/Country.mmdb > files/etc/openclash/Country.mmdb
 wget -qO- https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat > files/etc/openclash/GeoIP.dat
 wget -qO- https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat > files/etc/openclash/GeoSite.dat
 
