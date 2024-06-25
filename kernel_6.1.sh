@@ -3,9 +3,8 @@
 
 #PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-#git clone --depth 1 https://github.com/coolsnowwolf/lede.git ../lede
-
-#cp ../lede/include/kernel-6.1 include/kernel-6.1 
+echo Clone lede source code
+git clone --depth 1 https://github.com/coolsnowwolf/lede.git lede
 
 cd openwrt
 
