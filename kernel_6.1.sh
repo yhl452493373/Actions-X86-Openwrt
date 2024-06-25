@@ -3,9 +3,11 @@
 
 #PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-git clone --depth 1 https://github.com/coolsnowwolf/lede.git ../lede
+#git clone --depth 1 https://github.com/coolsnowwolf/lede.git ../lede
 
-cp ../lede/include/kernel-6.1 include/kernel-6.1 
+#cp ../lede/include/kernel-6.1 include/kernel-6.1 
+
+cd openwrt
 
 rm -rf target/linux/generic/backport-6.1
 cp -r ../lede/target/linux/generic/backport-6.1 target/linux/generic/backport-6.1
