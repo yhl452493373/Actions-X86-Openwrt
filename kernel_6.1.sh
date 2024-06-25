@@ -1,10 +1,7 @@
 #!/bin/bash
-#run this in openwrt workdir
+#run this in openwrt's parent folder
 
-#PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
-echo Clone lede source code
-git clone --depth 1 https://github.com/coolsnowwolf/lede.git lede
+#git clone --depth 1 https://github.com/coolsnowwolf/lede.git lede
 
 cd openwrt
 
