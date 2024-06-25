@@ -77,7 +77,7 @@ env:
   REPO_BRANCH: master
   RELEASE_PREFIX: Openwrt
   FEEDS_CONF: feeds.conf
-  CONFIG_FILE: x86_6_1.config
+  CONFIG_FILE: x86.config
   DIY_P1_SH: x86-part1.sh
   DIY_P2_SH: x86-part2.sh
   DISTFEEDS: distfeeds.conf
@@ -134,8 +134,10 @@ jobs:
       - name: 使用 Lede 的 6.1 Patches
         working-directory: /workdir
         run: |
+          pwd
+          ls
           git clone --depth 1 https://github.com/coolsnowwolf/lede.git lede
-          chmod a+x kernel_6.1.sh
+          chmod +x kernel_6.1.sh
           sh kernel_6.1.sh
           
       - name: 载入自定义 Feeds
