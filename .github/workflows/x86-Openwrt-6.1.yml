@@ -130,7 +130,14 @@ jobs:
           git clone $REPO_URL -b $REPO_BRANCH openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           echo Clone finished.
-
+          
+      - name: 使用 Lede 的 6.1 Patches
+        working-directory: /workdir
+        run: |
+          git clone --depth 1 https://github.com/coolsnowwolf/lede.git lede
+          chmod a+x kernel_6.1.sh
+          sh kernel_6.1.sh
+          
       - name: 载入自定义 Feeds
         run: |
           echo Start loading customize feeds...
