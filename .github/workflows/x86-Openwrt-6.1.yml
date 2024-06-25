@@ -134,9 +134,9 @@ jobs:
       - name: 使用 Lede 的 6.1 Patches
         working-directory: /workdir
         run: |
-          pwd
-          ls
           git clone --depth 1 https://github.com/coolsnowwolf/lede.git lede
+          ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
+          cd $GITHUB_WORKSPACE
           chmod +x kernel_6.1.sh
           sh kernel_6.1.sh
           
