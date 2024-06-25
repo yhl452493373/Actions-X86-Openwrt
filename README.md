@@ -7,7 +7,6 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 ### 配置文件说明
 
 + `x86.config`为最新内核（目前为6.6），此内核用于`x86-Openwrt-newset.yml`构建，但是目前测试部分机器无法正常启动
-+ `x86_6_1.config`为6.1内核，此内核用于`x86-Openwrt-6.1.yml`构建，兼容性较好
 
 ### 额外包含以下软件
 
