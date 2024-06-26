@@ -4,9 +4,10 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
 ### 每周六早上自动编译Openwrt最新代码。编译后系统主题为argon，去除了openwrt部分默认选中的软件，同时nginx去除http自动转https，编译分支为`master` ，即最新代码
 
-### 配置文件说明
+### 6.1内核脚本文件说明
 
-+ `x86.config`为最新内核（目前为6.6），此内核用于`x86-Openwrt-newset.yml`构建，但是目前测试部分机器无法正常启动
++ `kernel_6.1.sh`为Openwrt目前在维护的6.1内核脚本，仅恢复被官方删除的x86的6.1相关配置，以及把6.1作为默认内核。`x86-Openwrt-6.1.yml`使用该脚本
++ `kernel_lede_6.1.sh`为Lede目前在维护的6.1内核脚本，`target/linux/generic/`下6.1内核相关补丁采用Lede的补丁，`include/kernel-6.1`也采用Lede的，`target/linux/x86/`下面的6.1配置采用Openwrt最后一次删除时的配置，同时改6.1为默认内核。`x86-Openwrt-6.1-lede.yml`使用该脚本
 
 ### 额外包含以下软件
 
