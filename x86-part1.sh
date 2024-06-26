@@ -28,9 +28,9 @@ git clone https://github.com/yhl452493373/npc.git package/npc
 git clone https://github.com/yhl452493373/luci-app-npc.git package/luci-app-npc
 
 # OpenClash，此处使用开发版
-git clone -b dev --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+#git clone -b dev --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 # idea主题替换为material，否则夜间模式日志是浅色
-sed -i 's/theme: "idea",/theme: "material",/g' package/luci-app-openclash/luci-app-openclash/luasrc/view/openclash/config_editor.htm
+#sed -i 's/theme: "idea",/theme: "material",/g' package/luci-app-openclash/luci-app-openclash/luasrc/view/openclash/config_editor.htm
 
 # 关机
 git clone https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
