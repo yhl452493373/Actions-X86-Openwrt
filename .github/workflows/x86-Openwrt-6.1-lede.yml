@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build x86 Openwrt with Lede Kernel 6.1
+name: Build x86 Openwrt with Kernel 6.1 (Lede)
 
 on:
   schedule:
@@ -268,7 +268,7 @@ jobs:
           if [[ "${WAN_ETH}" != "" ]]; then
             WAN_ETH_TEXT="-wan-${WAN_ETH}"
           fi
-          echo "release_tag=${RELEASE_PREFIX}${LAN_PREFIX}${LAN_IP}${FIREWALL_TEXT}${CUSTOMIZE_TEXT}${WAN_ETH_TEXT}-lede-kernel-6.1-$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+          echo "release_tag=${RELEASE_PREFIX}${LAN_PREFIX}${LAN_IP}${FIREWALL_TEXT}${CUSTOMIZE_TEXT}${WAN_ETH_TEXT}-kernel-6.1-lede-$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
           touch release.txt
           echo "status=success" >> $GITHUB_OUTPUT
 
