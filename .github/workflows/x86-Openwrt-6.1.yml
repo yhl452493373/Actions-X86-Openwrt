@@ -145,6 +145,14 @@ jobs:
           cd openwrt
           ./scripts/feeds install -a
           echo Install feeds finished.
+          
+      - name: 回退ruby到3.2.2
+        run: |
+          cd openwrt
+          echo Restore ruby to 3.2.2
+          curl -sfL https://github.com/openwrt/packages/tree/4fdce5538f4938613599fc9fa1cf88ac325cf4ab/lang/ruby/Makefile -o feeds/packages/lang/ruby/Makefile
+          curl -sfL https://github.com/openwrt/packages/tree/4fdce5538f4938613599fc9fa1cf88ac325cf4ab/lang/ruby/ruby_find_pkgsdeps -o feeds/packages/lang/ruby/ruby_find_pkgsdeps
+          curl -sfL https://github.com/openwrt/packages/tree/4fdce5538f4938613599fc9fa1cf88ac325cf4ab/lang/ruby/lang/ruby/ruby_missingfiles -o feeds/packages/lang/ruby/ruby_missingfiles
         
       - name: 执行自定义脚本1
         run: |
