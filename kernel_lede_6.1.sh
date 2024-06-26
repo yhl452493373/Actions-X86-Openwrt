@@ -18,6 +18,7 @@ rm -rf target/linux/generic/pending-6.1
 cp -r ../lede/target/linux/generic/pending-6.1 target/linux/generic/pending-6.1
 
 echo Replace include/kernel-6.1
+rm -rf include/kernel-6.1
 cp ../lede/include/kernel-6.1 include/kernel-6.1
 
 echo Restore target/linux/x86/patches-6.1
