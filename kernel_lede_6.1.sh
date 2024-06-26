@@ -1,7 +1,7 @@
 #!/bin/bash
 #run this in openwrt's parent folder
 
-git clone --depth 1 https://github.com/coolsnowwolf/lede.git lede
+#git clone --depth 1 https://github.com/coolsnowwolf/lede.git lede
 
 cd openwrt
 
