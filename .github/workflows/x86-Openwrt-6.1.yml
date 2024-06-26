@@ -117,7 +117,7 @@ jobs:
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           echo Clone finished.
           
-      - name: 使用 Lede 的 6.1 Patches
+      - name: 恢复 Openwrt 的 6.1 内核
         working-directory: /workdir
         run: |
           git clone --depth 1 https://github.com/coolsnowwolf/lede.git lede
