@@ -5,20 +5,20 @@
 
 cd openwrt
 
-echo Replace target/linux/generic/backport-6.1
-rm -rf target/linux/generic/backport-6.1
-cp -r ../lede/target/linux/generic/backport-6.1 target/linux/generic/backport-6.1
+#echo Replace target/linux/generic/backport-6.1
+#rm -rf target/linux/generic/backport-6.1
+#cp -r ../lede/target/linux/generic/backport-6.1 target/linux/generic/backport-6.1
 
-echo Replace target/linux/generic/hack-6.1
-rm -rf target/linux/generic/hack-6.1
-cp -r ../lede/target/linux/generic/hack-6.1 target/linux/generic/hack-6.1
+#echo Replace target/linux/generic/hack-6.1
+#rm -rf target/linux/generic/hack-6.1
+#cp -r ../lede/target/linux/generic/hack-6.1 target/linux/generic/hack-6.1
 
-echo Replace target/linux/generic/pending-6.1
-rm -rf target/linux/generic/pending-6.1
-cp -r ../lede/target/linux/generic/pending-6.1 target/linux/generic/pending-6.1
+#echo Replace target/linux/generic/pending-6.1
+#rm -rf target/linux/generic/pending-6.1
+#cp -r ../lede/target/linux/generic/pending-6.1 target/linux/generic/pending-6.1
 
-echo Replace include/kernel-6.1
-cp ../lede/include/kernel-6.1 include/kernel-6.1
+#echo Replace include/kernel-6.1
+#cp ../lede/include/kernel-6.1 include/kernel-6.1
 
 echo Restore target/linux/x86/patches-6.1
 mkdir -p target/linux/x86/patches-6.1
@@ -33,12 +33,11 @@ curl -sfL https://raw.githubusercontent.com/openwrt/openwrt/485afd4b1107d38dff94
 
 echo Restore and update target/linux/x86/config-6.1
 curl -sfL https://raw.githubusercontent.com/openwrt/openwrt/485afd4b1107d38dff94bca106ecf260982dee35/target/linux/x86/config-6.1 -o target/linux/x86/config-6.1
-sed -i '/^CONFIG_MITIGATION_SPECTRE_BHI=y/a CONFIG_CPU_MITIGATIONS=y' target/linux/x86/config-6.1
-sed -i '/^CONFIG_CPU_MITIGATIONS=y/a CONFIG_FIT_PARTITION=n' target/linux/x86/config-6.1
-sed -i '/^CONFIG_FIT_PARTITION=n/a CONFIG_SHORTCUT_FE=y' target/linux/x86/config-6.1
-sed -i '/^CONFIG_SHORTCUT_FE=y/a CONFIG_NF_CONNTRACK_EVENTS=y' target/linux/x86/config-6.1
-sed -i '/^CONFIG_NF_CONNTRACK_EVENTS=y/a CONFIG_NF_CONNTRACK_CHAIN_EVENTS=n' target/linux/x86/config-6.1
-
+#sed -i '/^CONFIG_MITIGATION_SPECTRE_BHI=y/a CONFIG_CPU_MITIGATIONS=y' target/linux/x86/config-6.1
+#sed -i '/^CONFIG_CPU_MITIGATIONS=y/a CONFIG_FIT_PARTITION=n' target/linux/x86/config-6.1
+#sed -i '/^CONFIG_FIT_PARTITION=n/a CONFIG_SHORTCUT_FE=y' target/linux/x86/config-6.1
+#sed -i '/^CONFIG_SHORTCUT_FE=y/a CONFIG_NF_CONNTRACK_EVENTS=y' target/linux/x86/config-6.1
+#sed -i '/^CONFIG_NF_CONNTRACK_EVENTS=y/a CONFIG_NF_CONNTRACK_CHAIN_EVENTS=n' target/linux/x86/config-6.1
 
 echo Restore target/linux/x86/generic/config-6.1
 curl -sfL https://raw.githubusercontent.com/openwrt/openwrt/485afd4b1107d38dff94bca106ecf260982dee35/target/linux/x86/generic/config-6.1 -o target/linux/x86/generic/config-6.1
