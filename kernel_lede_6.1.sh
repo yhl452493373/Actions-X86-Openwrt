@@ -21,6 +21,7 @@ echo Replace include/kernel-6.1
 cp ../lede/include/kernel-6.1 include/kernel-6.1
 
 echo Restore target/linux/x86/patches-6.1
+rm -rf target/linux/x86/patches-6.1
 mkdir -p target/linux/x86/patches-6.1
 curl -sfL https://raw.githubusercontent.com/openwrt/openwrt/485afd4b1107d38dff94bca106ecf260982dee35/target/linux/x86/patches-6.1/100-fix_cs5535_clockevt.patch -o target/linux/x86/patches-6.1/100-fix_cs5535_clockevt.patch
 curl -sfL https://raw.githubusercontent.com/openwrt/openwrt/485afd4b1107d38dff94bca106ecf260982dee35/target/linux/x86/patches-6.1/103-pcengines_apu6_platform.patch -o target/linux/x86/patches-6.1/103-pcengines_apu6_platform.patch
