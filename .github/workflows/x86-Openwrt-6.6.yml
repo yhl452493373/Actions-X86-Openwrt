@@ -40,18 +40,26 @@ on:
           - 'eth3'
           - 'eth4'
           - 'eth5'
-      wan-ip:
-        description: 'WAN口IP'
+      ttyd-port:
+        description: '网页终端监听端口'
         required: false
-        default: ''
-      wan-netmask:
-        description: 'WAN口掩码'
+        default: '7681'
+      openclash-port:
+        description: 'OpenClash管理端口'
         required: false
-        default: ''
-      wan-gateway:
-        description: 'WAN口网关'
-        required: false
-        default: ''
+        default: '9090'
+#      wan-ip:
+#        description: 'WAN口IP'
+#        required: false
+#        default: ''
+#      wan-netmask:
+#        description: 'WAN口掩码'
+#        required: false
+#        default: ''
+#      wan-gateway:
+#        description: 'WAN口网关'
+#        required: false
+#        default: ''
       npc-protocol:
         description: 'NPS服务端通信协议'
         required: false
@@ -185,6 +193,8 @@ jobs:
           NPC_SERVER: ${{github.event.inputs.npc-server}}
           NPC_PORT: ${{github.event.inputs.npc-port}}
           NPC_VKEY: ${{github.event.inputs.npc-vkey}}
+          TTYD_PORT: ${{github.event.inputs.ttyd-port}}
+          OPENCLASH_PORT: ${{github.event.inputs.openclash-port}}
         run: |
           echo Start executing script...
           chmod +x $DIY_P2_SH

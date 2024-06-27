@@ -49,7 +49,6 @@ if [[ "${ENABLE_FIREWALL}" == "false" ]]; then
   sed -i 's/#uci -q set firewall/uci -q set firewall/g' files/etc/uci-defaults/100-default-settings
   sed -i 's/#uci commit firewall/uci commit firewall/g' files/etc/uci-defaults/100-default-settings
   sed -i "s/#uci -q delete ttyd/uci -q delete ttyd/g" files/etc/uci-defaults/100-default-settings
-  sed -i "s/#uci commit ttyd/uci commit ttyd/g" files/etc/uci-defaults/100-default-settings
   sed -i "s/#uci -q set openclash/uci -q set openclash/g" files/etc/uci-defaults/100-default-settings
   sed -i "s/#uci commit openclash/uci commit openclash/g" files/etc/uci-defaults/100-default-settings
 fi
@@ -58,6 +57,17 @@ fi
 if [[ "${WAN_ETH}" != "" && "${WAN_ETH}" != "eth0" ]]; then
   sed -i "s/option device 'eth0'/option device '""${WAN_ETH}""'/g" files/etc/config/network
   sed -i "s/list ports '""${WAN_ETH}""'/list ports 'eth0'/g" files/etc/config/network
+fi
+
+# 修改ttyd默认端口
+if [[ "${TTYD_PORT}" != "" ]]; then
+  sed -i "s/uci set ttyd.@ttyd\[0\].port='7681'/uci set ttyd.@ttyd\[0\].port='"${TTYD_PORT}"'/g" files/etc/uci-defaults/100-default-settings
+fi
+
+# 修改OpenClash默认端口
+if [[ "${OPENCLASH_PORT}" != "" ]]; then
+  sed -i "s/uci -q set openclash.config.cn_port='9090'/uci -q set openclash.config.cn_port='"${OPENCLASH_PORT}"'/g" files/etc/uci-defaults/100-default-settings
+  sed -i "s/uci -q set openclash.config.dashboard_forward_port='9090'/uci -q set openclash.config.dashboard_forward_port='"${OPENCLASH_PORT}"'/g" files/etc/uci-defaults/100-default-settings
 fi
 
 # 如果启用npc，进行相应配置
@@ -90,12 +100,3 @@ wget -qO- https://cdn.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/Country
 wget -qO- https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat > files/etc/openclash/GeoIP.dat
 wget -qO- https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat > files/etc/openclash/GeoSite.dat
 
-# 创建npc的二进制文件所在路径
-#mkdir -p files/usr/bin
-# 设置NPC下载地址变量，只取第一条记录，即最新的
-# 从github上releases下载
-#NPC_URL=$( curl -sL https://api.github.com/repos/ehang-io/nps/releases | grep /linux_amd64_client | awk -F '"' '{print $4}' | awk 'NR==1{print}' )
-# 下载并解压其中的根目录下名为npc的执行文件
-#wget -qO- $NPC_URL | tar xOvz npc > files/usr/bin/npc
-# 给npc二进制文件增加执行权限
-#chmod +x files/usr/bin/npc

@@ -69,12 +69,15 @@ uci commit dhcp
 #uci -q set firewall.@zone[1].forward='ACCEPT'
 #uci commit firewall
 
-#ttyd网页终端允许wan口访问
+#ttyd网页终端允许wan口访问以及设置端口
 #uci -q delete ttyd.@ttyd[0].interface
-#uci commit ttyd
+uci set ttyd.@ttyd[0].port='7681'
+uci commit ttyd
 
-#openclash允许wan口连接代理端口
+#openclash允许wan口连接代理端口及设置管理页面端口
 #uci -q set openclash.config.intranet_allowed='0'
+uci -q set openclash.config.cn_port='9090'
+uci -q set openclash.config.dashboard_forward_port='9090'
 uci commit openclash
 
 #NPS内网穿透服务
