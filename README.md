@@ -4,7 +4,7 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
 ### `6.6内核`每周六早上自动编译Openwrt最新代码。编译后系统主题为argon，去除了openwrt部分默认选中的软件，同时nginx去除http自动转https，编译分支为`master` ，即最新代码
 
-### 6.1内核脚本文件说明
+### `6.1内核`脚本文件说明
 
 **由于6.6内核在部分设备上无法启动，因此才有了6.1内核脚本，从openwrt官方获取openwrt源码，配合lede的6.1内核来编译。如果你的设备用openwrt最新代码无法启动，可以试试回到6.1内核**
 
