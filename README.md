@@ -6,7 +6,7 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
 ### 6.1内核脚本文件说明
 
-**由于6.6内核在部分设备上无法启动，因此才有了6.1内核脚本，从openwrt官方或者lede获取6.1内核来编译。如果你的设备用openwrt最新代码无法启动，可以试试回到6.1内核**
+**由于6.6内核在部分设备上无法启动，因此才有了6.1内核脚本，从openwrt官方获取openwrt源码，配合lede的6.1内核来编译。如果你的设备用openwrt最新代码无法启动，可以试试回到6.1内核**
 
 我自己的设备：
 
@@ -16,13 +16,10 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
 说明：
 
-+ `kernel_6.1.sh`为Openwrt目前在维护的6.1内核脚本，仅恢复被官方删除的x86的6.1相关配置，以及把6.1作为默认内核。
-  + `x86-Openwrt-6.1.yml`使用该脚本
-  + 根据openwrt现有内核情况，目测一定时机后，他们会删除6.1内核
 + `kernel_lede_6.1.sh`为Lede目前在维护的6.1内核脚本，`target/linux/generic/`下6.1内核相关补丁采用Lede的补丁，`include/kernel-6.1`也采用Lede的，`target/linux/x86/`下面的6.1配置采用Openwrt最后一次删除时的配置，同时改6.1为默认内核。
-  + `x86-Openwrt-6.1-lede.yml`使用该脚本
-  + 根据仓库代码，lede应当会保留6.1内核
-  + 由于这个是用的非openwrt维护的内核，时间长了之后可能与最新的openwrt源码不兼容
++ `x86-Openwrt-6.1-lede.yml`使用该脚本
++ 根据仓库代码，lede应当会保留6.1内核
++ 由于这个是用的非openwrt维护的内核，时间长了之后可能与最新的openwrt源码不兼容
 
 ### 额外包含以下软件
 
