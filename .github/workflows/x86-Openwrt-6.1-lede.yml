@@ -123,6 +123,9 @@ jobs:
           df -hT $PWD
           echo Start cloning...
           git clone $REPO_URL -b $REPO_BRANCH openwrt
+          cd openwrt
+          git checkout 852ed0379a170ca031bc238ec34a4a8768526a45
+          cd ..
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           echo Clone finished.
           
