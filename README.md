@@ -2,24 +2,7 @@
 
 Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
-### `6.6内核`每周六早上自动编译Openwrt最新代码。编译后系统主题为argon，去除了openwrt部分默认选中的软件，同时nginx去除http自动转https，编译分支为`master` ，即最新代码
-
-### `6.1内核`脚本文件说明
-
-**由于6.6内核在部分设备上无法启动，因此才有了6.1内核脚本，从openwrt官方获取openwrt源码，配合lede的6.1内核来编译。如果你的设备用openwrt最新代码无法启动，可以试试回到6.1内核。但是因为Openwrt官方已完全移除6.1内核，而lede还在维护，固后面可能会出现6.1内核无法编译通过或编译通过后无法使用的问题。**
-
-我自己的设备：
-
-+ 康耐信J4125 4口2.5G的软路由可以6.6内核
-+ 京云JC500X J3355 小主机，不能用6.6内核，只能6.1内核
-+ 之前咸鱼买的 J4205 4口 i211 千兆软路由，不能用6.6内核，只能6.1内核
-
-说明：
-
-+ `kernel_lede_6.1.sh`为Lede目前在维护的6.1内核脚本，`target/linux/generic/`下6.1内核相关补丁采用Lede的补丁，`include/kernel-6.1`也采用Lede的，`target/linux/x86/`下面的6.1配置采用Openwrt最后一次删除时的配置，同时改6.1为默认内核。
-+ `x86-Openwrt-6.1-lede.yml`使用该脚本
-+ 根据仓库代码，lede应当会保留6.1内核
-+ 由于这个是用的非openwrt维护的内核，时间长了之后可能与最新的openwrt源码不兼容
+### 每周六早上自动编译Openwrt最新代码。编译后系统主题为argon，去除了openwrt部分默认选中的软件，同时nginx去除http自动转https，编译分支为`master` ，即最新代码
 
 ### 额外包含以下软件
 
