@@ -48,10 +48,10 @@ uci commit system
 
 #修改lan口本身的dns
 uci -q delete network.lan.dns
-uci -q add_list network.lan.dns='114.114.114.114'
+uci -q add_list network.lan.dns='223.5.5.5'
+uic -q add_list network.lan.dns='223.6.6.6'
 uci -q add_list network.lan.dns='119.29.29.29'
 uci -q add_list network.lan.dns='180.76.76.76'
-uci -q add_list network.lan.dns='223.5.5.5'
 uci -q add_list network.lan.dns='1.2.4.8'
 uci commit network
 
