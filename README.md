@@ -28,10 +28,10 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
 如果你接口超过6个，需要自行修改[files/etc/config/network](files/etc/config/network)中`option name 'br-lan'`下的网卡接口
 
-### 云编译需要[在此](https://github.com/settings/tokens)生成`Fine-grained personal access tokens`，做如下设置：
+### 云编译需要[在此](https://github.com/settings/tokens?type=beta)生成`Fine-grained personal access tokens`，做如下设置：
 
 + Token name:`OPENWRT_TOKEN`
-+ Expiration:`90 Days`，注意意味着token90天后过期，到时需要重新生成。你也可以选择`Custom...`，然后设置指定时间过期，最多可选一年
++ Expiration:`90 Days`，注意意味着token90天后过期，到时需要重新生成。你也可以选择`Custom...`，然后设置指定时间过期，最多可选一年。现在也可以选择`No expiration`，表示永不过期。
 + Repository access: `Only select repositories`->选中自己的`Actions-X86-OpenWrt`
 + Permissions:`Repository permissions`
     + Actions:`Read and write`
