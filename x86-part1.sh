@@ -16,8 +16,14 @@
 #wsl里面编译前加入下面命令，不包含#
 #PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+# openwrt-passwall-packages，openwrt-passwall2或homeproxy会用到
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
-git clone https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
+
+# openwrt-passwall2
+#git clone https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
+
+# homeproxy
+git clone https://github.com/immortalwrt/homeproxy.git package/homeproxy
 
 # argon主题
 #git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
