@@ -16,6 +16,7 @@
 #wsl里面编译前加入下面命令，不包含#
 #PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
 git clone https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
 
 # argon主题
