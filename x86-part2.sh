@@ -22,7 +22,7 @@ rm -rf package/feeds/luci/luci-app-openclash
 #删除 msgid "MihomoTProxy" 下的一行
 sed -i '/msgid "MihomoTProxy"/{n;d}' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
 #在 msgid "MihomoTProxy" 下添加一行
-sed -i '/msgid "MihomoTProxy"/a\msgstr "红杏出墙"' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
+sed -i '/msgid "MihomoTProxy"/a\msgstr "出国提速"' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
 #luci-app-upnp
 sed -i 's/msgstr "UPnP IGD 和 PCP"/msgstr "即插即用"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
 sed -i 's/msgstr "UPnP IGD 和 PCP\/NAT-PMP 服务"/msgstr "即插即用服务"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
