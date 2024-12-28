@@ -55,6 +55,7 @@ uci commit network
 #修改lan口通知到客户端的dns
 uci -q delete dhcp.lan.dhcp_option
 uci -q add_list dhcp.lan.dhcp_option='6,223.5.5.5,223.6.6.6'
+uci -q set dhcp.lan.force=1
 uci commit dhcp
 
 #修改防火墙，允许WAN口入栈和转发
