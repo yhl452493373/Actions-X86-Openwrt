@@ -16,8 +16,13 @@ rm -rf package/feeds/luci/luci-app-openclash
 
 #调整软件在菜单中的名称
 #luci-app-homeproxy
-sed -i 's/msgstr "HomeProxy"/msgstr "家庭代理"/g' package/homeproxy/po/zh_Hans/homeproxy.po
-sed -i 's/msgstr "为 ARM64\/AMD64 设计的现代 ImmortalWrt 代理平台。"/msgstr "为 ARM64\/AMD64 设计的现代 OpenWrt 代理平台。"/g' package/homeproxy/po/zh_Hans/homeproxy.po
+#sed -i 's/msgstr "HomeProxy"/msgstr "家庭代理"/g' package/homeproxy/po/zh_Hans/homeproxy.po
+#sed -i 's/msgstr "为 ARM64\/AMD64 设计的现代 ImmortalWrt 代理平台。"/msgstr "为 ARM64\/AMD64 设计的现代 OpenWrt 代理平台。"/g' package/homeproxy/po/zh_Hans/homeproxy.po
+#luci-app-mihomo
+#删除 msgid "MihomoTProxy" 下的一行
+sed -i '/msgid "MihomoTProxy"/{n;d}' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
+#在 msgid "MihomoTProxy" 下添加一行
+sed -i '/msgid "MihomoTProxy"/a\msgstr "红杏出墙"' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
 #luci-app-upnp
 sed -i 's/msgstr "UPnP IGD 和 PCP"/msgstr "即插即用"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
 sed -i 's/msgstr "UPnP IGD 和 PCP\/NAT-PMP 服务"/msgstr "即插即用服务"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
