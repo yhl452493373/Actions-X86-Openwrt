@@ -24,7 +24,7 @@
 #git clone https://github.com/immortalwrt/homeproxy.git package/homeproxy
 
 # OpenWrt-mihomo
-git clone  https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
+#git clone  https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
 
 # argon主题
 #git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
