@@ -18,23 +18,30 @@ rm -rf package/feeds/luci/luci-app-openclash
 #luci-app-homeproxy
 #sed -i 's/msgstr "HomeProxy"/msgstr "家庭代理"/g' package/homeproxy/po/zh_Hans/homeproxy.po
 #sed -i 's/msgstr "为 ARM64\/AMD64 设计的现代 ImmortalWrt 代理平台。"/msgstr "为 ARM64\/AMD64 设计的现代 OpenWrt 代理平台。"/g' package/homeproxy/po/zh_Hans/homeproxy.po
+
 #luci-app-mihomo
 #删除 msgid "MihomoTProxy" 下的一行
-sed -i '/msgid "MihomoTProxy"/{n;d}' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
+#sed -i '/msgid "MihomoTProxy"/{n;d}' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
 #在 msgid "MihomoTProxy" 下添加一行
-sed -i '/msgid "MihomoTProxy"/a\msgstr "出国加速"' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
+#sed -i '/msgid "MihomoTProxy"/a\msgstr "出国加速"' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
+
 #luci-app-upnp
 sed -i 's/msgstr "UPnP IGD 和 PCP"/msgstr "即插即用"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
 sed -i 's/msgstr "UPnP IGD 和 PCP\/NAT-PMP 服务"/msgstr "即插即用服务"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+
 #luci-app-nft-qos
 sed -i 's/msgstr "QoS Nftables 版"/msgstr "服务质量"/g' feeds/luci/applications/luci-app-nft-qos/po/zh_Hans/nft-qos.po
+
 #luci-app-ttyd
 sed -i 's/msgstr "终端"/msgstr "网页终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 sed -i "s/ssl === '1' ? 'https' : 'http'/ssl === '1' ? 'https' : location.protocol.replace(':','')/g" feeds/luci/applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/term.js
+
 #luci-app-openclash
 sed -i 's/msgstr "OpenClash"/msgstr "科学上网"/g' package/luci-app-openclash/luci-app-openclash/po/zh-cn/openclash.zh-cn.po
+
 #luci-app-npc
 sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
+
 #luci-app-frpc
 #sed -i 's/msgstr "frp 客户端"/msgstr "FRP穿透"/g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
   
