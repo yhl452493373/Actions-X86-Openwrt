@@ -26,9 +26,6 @@
 # OpenWrt-mihomo
 #git clone  https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
 
-# alpha主题
-git clone https://github.com/derisamedia/luci-theme-alpha.git package/luci-theme-alpha
-
 # argon主题
 #git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/yhl452493373/luci-theme-argon.git package/luci-theme-argon
