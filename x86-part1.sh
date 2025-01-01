@@ -26,12 +26,6 @@
 # OpenWrt-mihomo
 #git clone  https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
 
-# peditx主题
-git clone https://github.com/peditx/luci-theme-peditx.git package/luci-theme-peditx
-
-# infinityfreedom主题
-git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/luci-theme-infinityfreedom
-
 # argon主题
 #git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/yhl452493373/luci-theme-argon.git package/luci-theme-argon
