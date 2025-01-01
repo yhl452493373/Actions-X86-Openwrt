@@ -11,8 +11,8 @@
 name: Build x86 Openwrt with Kernel 6.12
 
 on:
-  schedule:
-    - cron: 0 20 * * 5
+#  schedule:
+#    - cron: 0 20 * * 5
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -82,7 +82,7 @@ on:
         default: ''
 env:
   REPO_URL: https://github.com/namiltd/openwrt.git
-  REPO_BRANCH: '6.12'
+  REPO_BRANCH: 6.12
   RELEASE_PREFIX: Openwrt
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: x86.config
