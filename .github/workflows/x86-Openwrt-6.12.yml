@@ -81,8 +81,8 @@ on:
         required: false
         default: ''
 env:
-  REPO_URL: https://github.com/namiltd/openwrt.git
-  REPO_BRANCH: 6.12
+  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
+  REPO_BRANCH: kernel-6.12
   RELEASE_PREFIX: Openwrt
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: x86.config
@@ -165,6 +165,8 @@ jobs:
           chmod +x $DIY_P1_SH
           cd openwrt 
           $GITHUB_WORKSPACE/$DIY_P1_SH
+          rm -rf package/luci-theme-argon
+          rm -rf package/luci-app-openclash
           echo Execute script finished.
 
       - name: 载入自定义配置
