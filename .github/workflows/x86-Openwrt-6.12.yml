@@ -81,8 +81,8 @@ on:
         required: false
         default: ''
 env:
-  REPO_URL: https://github.com/LiBwrt/openwrt-6.x.git
-  REPO_BRANCH: kernel-6.12
+  REPO_URL: https://github.com/namiltd/openwrt.git
+  REPO_BRANCH: 6.12
   RELEASE_PREFIX: Openwrt
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: x86.config
