@@ -165,8 +165,6 @@ jobs:
           chmod +x $DIY_P1_SH
           cd openwrt 
           $GITHUB_WORKSPACE/$DIY_P1_SH
-          rm -rf package/luci-theme-argon
-          rm -rf package/luci-app-openclash
           echo Execute script finished.
 
       - name: 载入自定义配置
