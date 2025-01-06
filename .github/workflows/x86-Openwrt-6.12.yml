@@ -173,6 +173,7 @@ jobs:
           echo Start loading config...
           [ -e files ] && mv files openwrt/files
           [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+          sed -i '$a CONFIG_TESTING_KERNEL=y' openwrt/.config
           echo Load config finished.
 
       - name: 设置初次启动脚本可执行权限
