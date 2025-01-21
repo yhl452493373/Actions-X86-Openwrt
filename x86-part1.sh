@@ -33,6 +33,9 @@ git clone https://github.com/yhl452493373/luci-theme-argon.git package/luci-them
 # infinityfreedom-ng主题
 #git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/luci-theme-infinityfreedom
 
+# kucat主题
+git clone -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
+
 # 高级设置
 git clone https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
 
