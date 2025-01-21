@@ -35,6 +35,7 @@ git clone https://github.com/yhl452493373/luci-theme-argon.git package/luci-them
 
 # kucat主题
 git clone -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
+git clone https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
 
 # 高级设置
 git clone https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
