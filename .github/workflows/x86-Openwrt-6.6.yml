@@ -82,7 +82,7 @@ on:
         default: ''
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: master
+  REPO_BRANCH: openwrt-24.10
   RELEASE_PREFIX: Openwrt
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: x86.config
