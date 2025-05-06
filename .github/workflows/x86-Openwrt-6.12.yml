@@ -98,9 +98,6 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: 检出项目代码
-        uses: actions/checkout@main
-
       - name: 初始化工作环境
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -121,7 +118,10 @@ jobs:
           swap-size-mb: 1024
           temp-reserve-mb: 100
           root-reserve-mb: 1024
-
+      
+      - name: 检出项目代码
+        uses: actions/checkout@main
+      
       - name: 克隆 Openwrt 源码
         working-directory: /workdir
         run: |
