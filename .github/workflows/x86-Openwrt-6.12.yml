@@ -85,7 +85,7 @@ env:
   REPO_BRANCH: main
   RELEASE_PREFIX: Openwrt
   FEEDS_CONF: feeds.conf
-  CONFIG_FILE: x86.config
+  CONFIG_FILE: x86.simple.config
   DIY_P1_SH: x86-part1.sh
   DIY_P2_SH: x86-part2.sh
   DISTFEEDS: distfeeds.conf
