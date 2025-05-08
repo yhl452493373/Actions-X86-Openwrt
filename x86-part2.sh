@@ -10,20 +10,13 @@
 #删除自带的更新
 sed -i '/luci-app-attendedsysupgrade/d' feeds/luci/collections/luci/Makefile
 
-#调整软件在菜单中的名称
-#luci-app-homeproxy
-#sed -i 's/msgstr "HomeProxy"/msgstr "家庭代理"/g' package/homeproxy/po/zh_Hans/homeproxy.po
-#sed -i 's/msgstr "为 ARM64\/AMD64 设计的现代 ImmortalWrt 代理平台。"/msgstr "为 ARM64\/AMD64 设计的现代 OpenWrt 代理平台。"/g' package/homeproxy/po/zh_Hans/homeproxy.po
-
-#luci-app-mihomo
-#删除 msgid "MihomoTProxy" 下的一行
-#sed -i '/msgid "MihomoTProxy"/{n;d}' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
-#在 msgid "MihomoTProxy" 下添加一行
-#sed -i '/msgid "MihomoTProxy"/a\msgstr "出国加速"' package/OpenWrt-mihomo/luci-app-mihomo/po/zh_Hans/mihomo.po
-
 #luci-app-upnp
+# lede中应用的字符串替换
+sed -i 's/msgstr "UPnP"/msgstr "即插即用"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+sed -i 's/msgstr "通用即插即用（UPnP）"/msgstr "通用即插即用"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+# openwrt中应用的字符串替换
 sed -i 's/msgstr "UPnP IGD 和 PCP"/msgstr "即插即用"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
-sed -i 's/msgstr "UPnP IGD 和 PCP\/NAT-PMP 服务"/msgstr "即插即用服务"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+sed -i 's/msgstr "UPnP IGD 和 PCP\/NAT-PMP 服务"/msgstr "通用即插即用"/g' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
 
 #luci-app-nft-qos
 sed -i 's/msgstr "QoS Nftables 版"/msgstr "服务质量"/g' feeds/luci/applications/luci-app-nft-qos/po/zh_Hans/nft-qos.po
@@ -38,9 +31,6 @@ sed -i 's/msgstr "OpenClash"/msgstr "科学上网"/g' package/luci-app-openclash
 #luci-app-npc
 sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
 
-#luci-app-frpc
-#sed -i 's/msgstr "frp 客户端"/msgstr "FRP穿透"/g' feeds/luci/applications/luci-app-frpc/po/zh_Hans/frpc.po
-  
 # 修改LAN口默认IP
 if [[ "${LAN_IP}" != "" ]]; then
   sed -i 's/192.168.2.1/'"${LAN_IP}"'/g' files/etc/config/network
