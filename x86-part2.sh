@@ -26,15 +26,11 @@ sed -i 's|msgstr "OpenClash"|msgstr "科学上网"|g' package/luci-app-openclash
 # luci-app-npc
 sed -i '|msgid "Nps Client"|i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
 
-# 修改LAN口默认IP
-if [[ "${LAN_IP}" != "" ]]; then
-  sed -i "s|192.168.1.1|${LAN_IP}|g" package/base-files/files/bin/config_generate
-  sed -i "s|uci -q set network.lan.ipaddr='192.168.2.1'|uci -q set network.lan.ipaddr='${LAN_IP}'|g" files/etc/uci-defaults/100-default-settings
-fi
-
-# 如果设置了wan口设备，则修改为指定设备
+# 如果设置了WAN口设备，则修改为指定设备
 if [[ "${WAN_ETH}" != "" && "${WAN_ETH}" != "eth0" ]]; then
-  sed -i "s|#uci -q set network.wan.device='eth0'|uci -q set network.wan.device='${WAN_ETH}'|g" files/etc/uci-defaults/100-default-settings
+  sed -i "s|uci -q set network.wan.device='eth0'|uci -q set network.wan.device='${WAN_ETH}'|g" files/etc/uci-defaults/100-default-settings
+  sed -i "s|uci -q set network.wan6.device='eth0'|uci -q set network.wan6.device='${WAN_ETH}'|g" files/etc/uci-defaults/100-default-settings
+  sed -i "s|uci -q add_list network.@device\[0\].ports='${WAN_ETH}'|uci -q add_list network.@device\[0\].ports='eth0'|g" files/etc/uci-defaults/100-default-settings
 fi
 
 # 设置WAN口静态IP
@@ -46,7 +42,12 @@ if [[ "${WAN_IP}" != "" && "${WAN_NETMASK}" != "" && "${WAN_GATEWAY}" != "" ]]; 
   sed -i "s|#uci -q set network.wan.dns='223.5.5.5 114.114.114.114'|uci -q set network.wan.dns='223.5.5.5 114.114.114.114'|g" files/etc/uci-defaults/100-default-settings
 fi
 
-# wan口是否启用防火墙
+# 修改LAN口默认IP
+if [[ "${LAN_IP}" != "" ]]; then
+  sed -i "s|uci -q set network.lan.ipaddr='192.168.2.1'|uci -q set network.lan.ipaddr='${LAN_IP}'|g" files/etc/uci-defaults/100-default-settings
+fi
+
+# WAN口是否启用防火墙
 if [[ "${ENABLE_FIREWALL}" == "false" ]]; then
   sed -i 's|#uci -q set firewall|uci -q set firewall|g' files/etc/uci-defaults/100-default-settings
   sed -i 's|#uci commit firewall|uci commit firewall|g' files/etc/uci-defaults/100-default-settings
