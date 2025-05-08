@@ -16,22 +16,9 @@
 #wsl里面编译前加入下面命令，不包含#
 #PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-# openwrt-passwall-packages，openwrt-passwall2或homeproxy会用到
-#git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
-# openwrt-passwall2
-#git clone https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
-# homeproxy
-#git clone https://github.com/immortalwrt/homeproxy.git package/homeproxy
-
-# OpenWrt-mihomo
-#git clone  https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
-
 # argon主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 #git clone https://github.com/yhl452493373/luci-theme-argon.git package/luci-theme-argon
-
-# infinityfreedom-ng主题
-#git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/luci-theme-infinityfreedom
 
 # 高级设置
 git clone https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
