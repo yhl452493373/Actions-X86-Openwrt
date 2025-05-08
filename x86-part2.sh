@@ -24,7 +24,7 @@ sed -i "s|ssl === '1' ? 'https' : 'http'|ssl === '1' ? 'https' : location.protoc
 sed -i 's|msgstr "OpenClash"|msgstr "科学上网"|g' package/luci-app-openclash/luci-app-openclash/po/zh-cn/openclash.zh-cn.po
 
 # luci-app-npc
-sed -i '|msgid "Nps Client"|i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
+sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-app-npc/po/zh_Hans/npc.po
 
 # 如果设置了WAN口设备，则修改为指定设备
 if [[ "${WAN_ETH}" != "" && "${WAN_ETH}" != "eth0" ]]; then
