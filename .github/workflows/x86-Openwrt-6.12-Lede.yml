@@ -82,7 +82,7 @@ on:
         default: ''
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
-  REPO_BRANCH: main
+  REPO_BRANCH: master
   RELEASE_PREFIX: Openwrt
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: x86.lede.config
