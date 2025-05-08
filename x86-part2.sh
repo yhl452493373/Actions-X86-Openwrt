@@ -10,10 +10,6 @@
 #删除自带的更新
 sed -i '/luci-app-attendedsysupgrade/d' feeds/luci/collections/luci/Makefile
 
-# 删除可能冲突的包
-rm -rf package/feeds/luci/luci-theme-argon
-rm -rf package/feeds/luci/luci-app-openclash
-
 #调整软件在菜单中的名称
 #luci-app-homeproxy
 #sed -i 's/msgstr "HomeProxy"/msgstr "家庭代理"/g' package/homeproxy/po/zh_Hans/homeproxy.po
