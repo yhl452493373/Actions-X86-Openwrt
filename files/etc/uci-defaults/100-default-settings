@@ -47,8 +47,8 @@ uci -q set network.lan.ipaddr='192.168.2.1'
 #uci -q set network.wan.device='eth0'
 #uci -q set network.wan.proto='static'
 #uci -q set network.wan.ipaddr='192.168.1.2'
-#uci -q set network.wan.netmask='255.255.255.0'
 #uci -q set network.wan.gateway='192.168.1.1'
+#uci -q set network.wan.netmask='255.255.255.0'
 #uci -q set network.wan.dns='223.5.5.5 114.114.114.114'
 uci commit network
 /etc/init.d/network restart
