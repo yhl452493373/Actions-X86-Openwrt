@@ -169,7 +169,7 @@ jobs:
         run: |
           cd lede
           echo Copy luci-app-fileassistant
-          cp -r ../extra-package/sirpdboy-package/luci-app-fileassistant package/luci-app-fileassistant
+          cp -r ../extra-package/sirpdboy-package/luci-app-fileassistant package/extra-package/luci-app-fileassistant
           echo Done.
 
       - name: 载入自定义配置

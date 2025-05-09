@@ -17,28 +17,28 @@
 #PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # argon主题
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-package/luci-theme-argon
 
 # sirpdboy的sirpdboy-package库
 git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git ../extra-package/sirpdboy-package
 # 高级设置
-cp -r ../extra-package/sirpdboy-package/luci-app-advanced package/luci-app-advanced
+cp -r ../extra-package/sirpdboy-package/luci-app-advanced package/extra-package/luci-app-advanced
 # 关机
-cp -r ../extra-package/sirpdboy-package/luci-app-poweroffdevice package/luci-app-poweroffdevice
+cp -r ../extra-package/sirpdboy-package/luci-app-poweroffdevice package/extra-package/luci-app-poweroffdevice
 
 # kenzok8的jell库
 git clone --depth 1 https://github.com/kenzok8/jell.git ../extra-package/jell
 # 定时重启
-cp -r ../extra-package/jell/luci-app-autoreboot package/luci-app-autoreboot
+cp -r ../extra-package/jell/luci-app-autoreboot package/extra-package/luci-app-autoreboot
 
 # NPS内网穿透的客户端NPC
-git clone https://github.com/yhl452493373/npc.git package/npc
-git clone https://github.com/yhl452493373/luci-app-npc.git package/luci-app-npc
+git clone https://github.com/yhl452493373/npc.git package/extra-package/npc
+git clone https://github.com/yhl452493373/luci-app-npc.git package/extra-package/luci-app-npc
 
 # OpenClash，此处使用开发版
-git clone -b dev --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+git clone -b dev --depth 1 https://github.com/vernesong/OpenClash.git package/extra-package/luci-app-openclash
 # idea主题替换为material，否则夜间模式日志是浅色
-sed -i 's|theme: "idea",|theme: "material",|g' package/luci-app-openclash/luci-app-openclash/luasrc/view/openclash/config_editor.htm
+sed -i 's|theme: "idea",|theme: "material",|g' package/extra-package/luci-app-openclash/luci-app-openclash/luasrc/view/openclash/config_editor.htm
 
 # 自己固件中需要的驱动
-git clone https://github.com/yhl452493373/openwrt-driver.git package/my-driver
+git clone https://github.com/yhl452493373/openwrt-driver.git package/extra-package/my-driver
