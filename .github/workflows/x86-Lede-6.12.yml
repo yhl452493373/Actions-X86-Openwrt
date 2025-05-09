@@ -172,6 +172,12 @@ jobs:
           rm -rf package/my-packages
           rm -rf package/my-driver
 
+      - name: 从Openwrt获取需要的包
+        run: |
+          git clone -b master --depth 1 https://github.com/openwrt/luci.git openwrt_luci
+          cd lede
+          cp -r ../openwrt_luci/applications/luci-app-filemanager package/luci-app-filemanager
+
       - name: 载入自定义配置
         run: |
           echo Start loading config...
