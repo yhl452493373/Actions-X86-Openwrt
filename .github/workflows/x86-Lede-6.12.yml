@@ -154,14 +154,6 @@ jobs:
           $GITHUB_WORKSPACE/$DIY_P1_SH
           echo Execute script finished.
 
-      - name: 拷贝额外需要的包
-        run: |
-          cd lede
-          echo Copy luci-app-fileassistant
-          rm -rf feeds/luci/applications/luci-app-fileassistant
-          cp -r ../extra-package/sirpdboy-package/luci-app-fileassistant package/extra-package/luci-app-fileassistant
-          echo Done.
-
       - name: 载入自定义配置
         run: |
           echo Start loading config...
