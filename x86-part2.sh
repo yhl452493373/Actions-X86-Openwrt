@@ -28,52 +28,55 @@ sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/luci-ap
 
 # 如果设置了WAN口设备，则修改为指定设备
 if [[ "${WAN_ETH}" != "" && "${WAN_ETH}" != "eth0" ]]; then
-  sed -i "s|uci -q set network.wan.device='eth0'|uci -q set network.wan.device='${WAN_ETH}'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|uci -q set network.wan6.device='eth0'|uci -q set network.wan6.device='${WAN_ETH}'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|uci -q add_list network.@device\[0\].ports='${WAN_ETH}'|uci -q add_list network.@device\[0\].ports='eth0'|g" files/etc/uci-defaults/100-default-settings
+  sed -i "s|uci -q set network.wan.device='eth0'|uci -q set network.wan.device='${WAN_ETH}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set network.wan6.device='eth0'|uci -q set network.wan6.device='${WAN_ETH}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q add_list network.@device\[0\].ports='${WAN_ETH}'|uci -q add_list network.@device\[0\].ports='eth0'|g" files/etc/uci-defaults/1000-default-settings
 fi
 
 # 设置WAN口静态IP
 if [[ "${WAN_IP}" != "" && "${WAN_NETMASK}" != "" && "${WAN_GATEWAY}" != "" ]]; then
-  sed -i "s|#uci -q set network.wan.proto='static'|uci -q set network.wan.proto='static'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|#uci -q set network.wan.ipaddr='192.168.1.2'|uci -q set network.wan.ipaddr='${WAN_IP}'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|#uci -q set network.wan.gateway='192.168.1.1'|uci -q set network.wan.gateway='${WAN_GATEWAY}'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|#uci -q set network.wan.netmask='255.255.255.0'|uci -q set network.wan.netmask='${WAN_NETMASK}'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|#uci -q set network.wan.dns='223.5.5.5 114.114.114.114'|uci -q set network.wan.dns='223.5.5.5 114.114.114.114'|g" files/etc/uci-defaults/100-default-settings
+  sed -i "s|#uci -q set network.wan.proto='static'|uci -q set network.wan.proto='static'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|#uci -q set network.wan.ipaddr='192.168.1.2'|uci -q set network.wan.ipaddr='${WAN_IP}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|#uci -q set network.wan.gateway='192.168.1.1'|uci -q set network.wan.gateway='${WAN_GATEWAY}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|#uci -q set network.wan.netmask='255.255.255.0'|uci -q set network.wan.netmask='${WAN_NETMASK}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|#uci -q set network.wan.dns='223.5.5.5 114.114.114.114'|uci -q set network.wan.dns='223.5.5.5 114.114.114.114'|g" files/etc/uci-defaults/1000-default-settings
 fi
 
 # 修改LAN口默认IP
 if [[ "${LAN_IP}" != "" ]]; then
-  sed -i "s|uci -q set network.lan.ipaddr='192.168.2.1'|uci -q set network.lan.ipaddr='${LAN_IP}'|g" files/etc/uci-defaults/100-default-settings
+  sed -i "s|uci -q set network.lan.ipaddr='192.168.2.1'|uci -q set network.lan.ipaddr='${LAN_IP}'|g" files/etc/uci-defaults/1000-default-settings
 fi
 
 # WAN口是否启用防火墙
 if [[ "${ENABLE_FIREWALL}" == "false" ]]; then
-  sed -i 's|#uci -q set firewall|uci -q set firewall|g' files/etc/uci-defaults/100-default-settings
-  sed -i 's|#uci commit firewall|uci commit firewall|g' files/etc/uci-defaults/100-default-settings
-  sed -i 's|#uci -q delete ttyd|uci -q delete ttyd|g' files/etc/uci-defaults/100-default-settings
-  sed -i 's|#uci -q set openclash|uci -q set openclash|g' files/etc/uci-defaults/100-default-settings
-  sed -i 's|#uci commit openclash|uci commit openclash|g' files/etc/uci-defaults/100-default-settings
+  sed -i 's|#uci -q set firewall|uci -q set firewall|g' files/etc/uci-defaults/1000-default-settings
+  sed -i 's|#uci commit firewall|uci commit firewall|g' files/etc/uci-defaults/1000-default-settings
+  sed -i 's|#uci -q delete ttyd|uci -q delete ttyd|g' files/etc/uci-defaults/1000-default-settings
+  sed -i 's|#uci -q set openclash|uci -q set openclash|g' files/etc/uci-defaults/1000-default-settings
+  sed -i 's|#uci commit openclash|uci commit openclash|g' files/etc/uci-defaults/1000-default-settings
 fi
 
 # 修改ttyd默认端口
 if [[ "${TTYD_PORT}" != "" ]]; then
-  sed -i "s|uci set ttyd.@ttyd\[0\].port='7681'|uci set ttyd.@ttyd\[0\].port='${TTYD_PORT}'|g" files/etc/uci-defaults/100-default-settings
+  sed -i "s|uci set ttyd.@ttyd\[0\].port='7681'|uci set ttyd.@ttyd\[0\].port='${TTYD_PORT}'|g" files/etc/uci-defaults/1000-default-settings
 fi
 
 # 修改OpenClash默认端口
 if [[ "${OPENCLASH_PORT}" != "" ]]; then
-  sed -i "s|uci -q set openclash.config.cn_port='9090'|uci -q set openclash.config.cn_port='${OPENCLASH_PORT}'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|uci -q set openclash.config.dashboard_forward_port='9090'|uci -q set openclash.config.dashboard_forward_port='${OPENCLASH_PORT}'|g" files/etc/uci-defaults/100-default-settings
+  sed -i "s|uci -q set openclash.config.cn_port='9090'|uci -q set openclash.config.cn_port='${OPENCLASH_PORT}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set openclash.config.dashboard_forward_port='9090'|uci -q set openclash.config.dashboard_forward_port='${OPENCLASH_PORT}'|g" files/etc/uci-defaults/1000-default-settings
 fi
+
+# 展示修改后的默认配置，如果在修改npc后面展示，会打印nps相关信息，因此不能在修改npc信息后打印
+cat files/etc/uci-defaults/1000-default-settings
 
 # 如果启用npc，进行相应配置
 if [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; then
-  sed -i "s|uci -q set npc.config.protocol='tcp'|uci -q set npc.config.protocol='${NPC_PROTOCOL}'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|uci -q set npc.config.enabled='0'|uci -q set npc.config.enabled='1'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|uci -q set npc.config.server_addr=''|uci -q set npc.config.server_addr='${NPC_SERVER}'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|uci -q set npc.config.server_port=''|uci -q set npc.config.server_port='${NPC_PORT}'|g" files/etc/uci-defaults/100-default-settings
-  sed -i "s|uci -q set npc.config.vkey=''|uci -q set npc.config.vkey='${NPC_VKEY}'|g" files/etc/uci-defaults/100-default-settings
+  sed -i "s|uci -q set npc.config.protocol='tcp'|uci -q set npc.config.protocol='${NPC_PROTOCOL}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.config.enabled='0'|uci -q set npc.config.enabled='1'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.config.server_addr=''|uci -q set npc.config.server_addr='${NPC_SERVER}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.config.server_port=''|uci -q set npc.config.server_port='${NPC_PORT}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.config.vkey=''|uci -q set npc.config.vkey='${NPC_VKEY}'|g" files/etc/uci-defaults/1000-default-settings
 fi
 
 # 修改编译信息
