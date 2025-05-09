@@ -16,6 +16,17 @@
 #wsl里面编译前加入下面命令，不包含#
 #PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+# 删除可能冲突的包
+rm -rf feeds/packages/net/nps
+rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/applications/luci-app-argon-config
+rm -rf feeds/luci/applications/luci-app-openclash
+rm -rf feeds/luci/applications/luci-app-nps
+rm -rf feeds/luci/applications/luci-app-autoreboot
+rm -rf feeds/luci/applications/luci-app-poweroff
+rm -rf feeds/luci/applications/luci-app-advanced
+rm -rf feeds/luci/applications/luci-app-poweroffdevice
+
 # argon主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-package/luci-theme-argon
 

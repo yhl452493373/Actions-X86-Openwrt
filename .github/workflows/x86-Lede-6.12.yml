@@ -154,21 +154,11 @@ jobs:
           $GITHUB_WORKSPACE/$DIY_P1_SH
           echo Execute script finished.
 
-      - name: 删除不需要的包
-        run: |
-          echo Start removing unnecessary packages...
-          cd lede
-          rm -rf feeds/packages/net/nps
-          rm -rf feeds/luci/themes/luci-theme-argon
-          rm -rf feeds/luci/applications/luci-app-argon-config
-          rm -rf feeds/luci/applications/luci-app-openclash
-          rm -rf feeds/luci/applications/luci-app-nps
-          echo Remove packages finished.
-
       - name: 拷贝额外需要的包
         run: |
           cd lede
           echo Copy luci-app-fileassistant
+          rm -rf feeds/luci/applications/luci-app-fileassistant
           cp -r ../extra-package/sirpdboy-package/luci-app-fileassistant package/extra-package/luci-app-fileassistant
           echo Done.
 
