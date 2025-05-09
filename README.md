@@ -26,9 +26,9 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 + 默认WAN口：第1个网卡接口
 + 默认LAN口：第2、3、4、5、6个接口
 
-如果你想修改指定网口为WAN口，需要自行修改[files/etc/config/network](files/etc/config/network)中`config interface 'wan'`下的网卡接口
+如果你想修改指定网口为WAN口，需要自行修改[1000-default-settings](files/etc/uci-defaults/1000-default-settings)，把`uci -q set network.wan.device='eth0'`和`uci -q set network.wan6.device='eth0'`中的`eth0`换成你希望的网口
 
-如果你接口超过6个，需要自行修改[files/etc/config/network](files/etc/config/network)中`option name 'br-lan'`下的网卡接口
+如果你接口超过6个，需要自行修改[1000-default-settings](files/etc/uci-defaults/1000-default-settings)，在`uci -q add_list network.@device[0].ports='eth5'`后面增加一行，内容为你的第n个网口，如`uci -q add_list network.@device[0].ports='eth6'`
 
 ### 云编译需要[在此](https://github.com/settings/tokens?type=beta)生成`Fine-grained personal access tokens`，做如下设置：
 
