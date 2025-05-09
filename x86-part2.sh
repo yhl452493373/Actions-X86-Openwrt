@@ -67,9 +67,6 @@ if [[ "${OPENCLASH_PORT}" != "" ]]; then
   sed -i "s|uci -q set openclash.config.dashboard_forward_port='9090'|uci -q set openclash.config.dashboard_forward_port='${OPENCLASH_PORT}'|g" files/etc/uci-defaults/1000-default-settings
 fi
 
-# 展示修改后的默认配置，如果在修改npc后面展示，会打印nps相关信息，因此不能在修改npc信息后打印
-cat files/etc/uci-defaults/1000-default-settings
-
 # 如果启用npc，进行相应配置
 if [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; then
   sed -i "s|uci -q set npc.config.protocol='tcp'|uci -q set npc.config.protocol='${NPC_PROTOCOL}'|g" files/etc/uci-defaults/1000-default-settings
@@ -78,6 +75,11 @@ if [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; th
   sed -i "s|uci -q set npc.config.server_port=''|uci -q set npc.config.server_port='${NPC_PORT}'|g" files/etc/uci-defaults/1000-default-settings
   sed -i "s|uci -q set npc.config.vkey=''|uci -q set npc.config.vkey='${NPC_VKEY}'|g" files/etc/uci-defaults/1000-default-settings
 fi
+
+# 输出文件内容
+echo "以下为初次启动时执行的脚本"
+# 有vkey，则隐藏，没有则原样输出
+sed -E "s|(uci -q set npc\.config\.vkey=')[^']+(')|\1已隐藏\2|g" files/etc/uci-defaults/1000-default-settings
 
 # 修改编译信息
 sed -i 's|%D %V, %C|%D %V, %C, Build by YangHuanglin|g' package/base-files/files/etc/banner
