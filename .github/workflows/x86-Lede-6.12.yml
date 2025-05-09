@@ -157,16 +157,6 @@ jobs:
           rm -rf feeds/luci/applications/luci-app-nps
           echo Remove packages finished.
 
-      - name: 下载需要的包
-        run: |
-          git clone -b master --depth 1 https://github.com/openwrt/luci.git openwrt_luci
-          cd lede
-          echo Copy luci-app-filemanager
-          cp -r ../openwrt_luci/applications/luci-app-filemanager package/luci-app-filemanager
-          sed -i '/PKG_LICENSE:=Apache-2.0/a PKG_VERSION:=1.0.0\nPKG_RELEASE:=1' package/luci-app-filemanager/Makefile
-          sed -i 's|include \.\./\.\./luci\.mk|include $(TOPDIR)/feeds/luci/luci.mk|' package/luci-app-filemanager/Makefile
-          echo Done.
-
       - name: 执行自定义脚本1
         run: |
           echo Start executing script...
@@ -178,9 +168,16 @@ jobs:
       - name: 删除自定义脚本下载的不需要的包
         run: |
           cd lede
-          rm -rf package/luci-app-advanced
           rm -rf package/my-packages
           rm -rf package/my-driver
+
+      - name: 下载需要的包
+        run: |
+          git clone -b master --depth 1 https://github.com/sirpdboy/sirpdboy-package.git sirpdboy-package
+          cd lede
+          echo Copy luci-app-fileassistant
+          cp -r ../sirpdboy-package/luci-app-fileassistant package/luci-app-fileassistant
+          echo Done.
 
       - name: 载入自定义配置
         run: |
