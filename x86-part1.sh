@@ -18,10 +18,18 @@
 
 # argon主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-#git clone https://github.com/yhl452493373/luci-theme-argon.git package/luci-theme-argon
 
+# sirpdboy的sirpdboy-package库
+git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git ../extra-package/sirpdboy-package
 # 高级设置
-git clone https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
+cp -r ../extra-package/sirpdboy-package/luci-app-advanced package/luci-app-advanced
+# 关机
+cp -r ../extra-package/sirpdboy-package/luci-app-poweroffdevice package/luci-app-poweroffdevice
+
+# kenzok8的jell库
+git clone --depth 1 https://github.com/kenzok8/jell.git ../extra-package/jell
+# 定时重启
+cp -r ../extra-package/jell/luci-app-autoreboot package/luci-app-autoreboot
 
 # NPS内网穿透的客户端NPC
 git clone https://github.com/yhl452493373/npc.git package/npc
@@ -31,16 +39,6 @@ git clone https://github.com/yhl452493373/luci-app-npc.git package/luci-app-npc
 git clone -b dev --depth 1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 # idea主题替换为material，否则夜间模式日志是浅色
 sed -i 's|theme: "idea",|theme: "material",|g' package/luci-app-openclash/luci-app-openclash/luasrc/view/openclash/config_editor.htm
-
-# 关机
-git clone https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
-# 修正关机中文语言问题
-mv package/luci-app-poweroff/po/zh-cn package/luci-app-poweroff/po/zh_Hans
-
-# 自己固件中需要的包
-git clone https://github.com/yhl452493373/openwrt-packages.git package/my-packages
-# 修正定时重启中文语言问题
-mv package/my-packages/luci-app-autoreboot/po/zh-cn package/my-packages/luci-app-autoreboot/po/zh_Hans
 
 # 自己固件中需要的驱动
 git clone https://github.com/yhl452493373/openwrt-driver.git package/my-driver
