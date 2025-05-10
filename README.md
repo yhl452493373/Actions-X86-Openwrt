@@ -21,7 +21,7 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
 ### 基本信息
 
-+ 默认密码：Openwrt 无, Lede password
++ 默认密码：Openwrt 无, Lede password，Immortalwrt 无
 + 默认IP：`192.168.2.1`
 + 默认WAN口：第1个网卡接口
 + 默认LAN口：第2、3、4、5、6个接口
