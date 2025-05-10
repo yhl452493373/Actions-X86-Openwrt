@@ -25,15 +25,17 @@ rm -rf feeds/luci/applications/luci-app-nps
 rm -rf feeds/luci/applications/luci-app-autoreboot
 rm -rf feeds/luci/applications/luci-app-poweroff
 rm -rf feeds/luci/applications/luci-app-advanced
+rm -rf feeds/luci/applications/luci-app-fileassistant
 rm -rf feeds/luci/applications/luci-app-poweroffdevice
 
 # argon主题
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-package/luci-theme-argon
+#git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-package/luci-theme-argon
+git clone https://github.com/yhl452493373/luci-theme-argon.git package/extra-package/luci-theme-argon
 
 # sirpdboy的sirpdboy-package库
 git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git ../extra-package/sirpdboy-package
-# 高级设置
-cp -r ../extra-package/sirpdboy-package/luci-app-advanced package/extra-package/luci-app-advanced
+# 文件管理，不能和sirpdboy-package里面的luci-app-advanced一起安装
+cp -r ../extra-package/sirpdboy-package/luci-app-fileassistant package/extra-package/luci-app-fileassistant
 # 关机
 cp -r ../extra-package/sirpdboy-package/luci-app-poweroffdevice package/extra-package/luci-app-poweroffdevice
 
