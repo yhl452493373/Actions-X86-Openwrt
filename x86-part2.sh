@@ -26,6 +26,12 @@ sed -i 's|msgstr "OpenClash"|msgstr "科学上网"|g' package/extra-package/luci
 # luci-app-npc
 sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/extra-package/luci-app-npc/po/zh_Hans/npc.po
 
+# 调整应用在菜单中的位置
+# samba4 移动到 服务 中
+set -i 's|admin/nas/samba4|admin/services/samba4|g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
+# ttyd 移动到 服务 中
+sed -i 's|admin/system/ttyd|admin/services/ttyd|g' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
+
 # 如果设置了WAN口设备，则修改为指定设备
 if [[ "${WAN_ETH}" != "" && "${WAN_ETH}" != "eth0" ]]; then
   sed -i "s|uci -q set network.wan.device='eth0'|uci -q set network.wan.device='${WAN_ETH}'|g" files/etc/uci-defaults/1000-default-settings

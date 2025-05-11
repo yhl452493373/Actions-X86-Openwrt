@@ -60,6 +60,7 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 - [Cisco](https://www.cisco.com/)
 - [OpenWrt](https://github.com/openwrt/openwrt)
 - [Lean's OpenWrt](https://github.com/coolsnowwolf/lede)
+- [ImmortalWrt](https://github.com/immortalwrt/immortalwrt)
 
 ## License
 
