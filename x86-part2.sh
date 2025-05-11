@@ -28,7 +28,7 @@ sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/extra-p
 
 # 调整应用在菜单中的位置
 # samba4 移动到 服务 中
-set -i 's|admin/nas/samba4|admin/services/samba4|g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
+sed -i 's|admin/nas/samba4|admin/services/samba4|g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
 # ttyd 移动到 服务 中
 sed -i 's|admin/system/ttyd|admin/services/ttyd|g' feeds/luci/applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json
 
