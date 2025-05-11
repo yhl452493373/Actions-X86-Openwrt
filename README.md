@@ -6,17 +6,20 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
 ### 每周六早上自动编译Openwrt最新代码。编译后系统主题为argon，去除了openwrt部分默认选中的软件，同时nginx去除http自动转https，编译分支为`master` ，即最新代码
 
-### 额外包含以下软件
+### 仅包含以下软件
 
-+ luci-app-openclash(科学上网)
-+ luci-app-npc(内网穿透)
-+ luci-app-upnp(即插即用)
-+ luci-app-samba4(网络共享)
 + luci-app-autoreboot(定时重启)
-+ luci-app-poweroff(关机)
++ luci-app-ddns(动态DNS)
++ luci-app-fileassistant(动态DNS)
 + luci-app-firewall(防火墙)
 + luci-app-nft-qos(服务质量)
++ luci-app-npc(内网穿透)
++ luci-app-nlbwmon(网络监控)
++ luci-app-openclash(科学上网)
++ luci-app-poweroffdevice(关机)
++ luci-app-samba4(网络共享)
 + luci-app-ttyd(TTYD终端)
++ luci-app-upnp(即插即用)
 + luci-theme-argon(argon主题)
 
 ### 基本信息
