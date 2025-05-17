@@ -17,7 +17,7 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 + luci-app-nlbwmon(网络监控)
 + luci-app-openclash(科学上网)
 + luci-app-poweroffdevice(关机)
-+ luci-app-samba4(网络共享)
++ luci-app-ksmbd(网络共享)
 + luci-app-ttyd(TTYD终端)
 + luci-app-upnp(即插即用)
 + luci-theme-argon(argon主题)
