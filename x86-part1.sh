@@ -36,13 +36,13 @@ git clone https://github.com/yhl452493373/luci-theme-argon.git package/extra-pac
 git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git ../extra-package/sirpdboy-package
 # 文件管理，不能和sirpdboy-package里面的luci-app-advanced一起安装
 cp -r ../extra-package/sirpdboy-package/luci-app-fileassistant package/extra-package/luci-app-fileassistant
-# 关机
-cp -r ../extra-package/sirpdboy-package/luci-app-poweroffdevice package/extra-package/luci-app-poweroffdevice
 
 # kenzok8的jell库
 git clone --depth 1 https://github.com/kenzok8/jell.git ../extra-package/jell
 # 定时重启
 cp -r ../extra-package/jell/luci-app-autoreboot package/extra-package/luci-app-autoreboot
+# 关机
+cp -r ../extra-package/jell/luci-app-poweroffdevice package/extra-package/luci-app-poweroffdevice
 
 # NPS内网穿透的客户端NPC
 git clone https://github.com/yhl452493373/npc.git package/extra-package/npc
