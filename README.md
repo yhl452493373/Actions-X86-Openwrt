@@ -10,7 +10,7 @@ Build openwrt using GitHub Actions | 使用 GitHub Actions 云编译 openwrt
 
 + luci-app-autoreboot(定时重启)
 + luci-app-ddns(动态DNS)
-+ luci-app-fileassistant(动态DNS)
++ luci-app-fileassistant(文件管理)
 + luci-app-firewall(防火墙)
 + luci-app-nft-qos(服务质量)
 + luci-app-npc(内网穿透)
