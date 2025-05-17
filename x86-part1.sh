@@ -29,8 +29,8 @@ rm -rf feeds/luci/applications/luci-app-fileassistant
 rm -rf feeds/luci/applications/luci-app-poweroffdevice
 
 # argon主题
-#git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-package/luci-theme-argon
-git clone https://github.com/yhl452493373/luci-theme-argon.git package/extra-package/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-package/luci-theme-argon
+#git clone https://github.com/yhl452493373/luci-theme-argon.git package/extra-package/luci-theme-argon
 
 # sirpdboy的sirpdboy-package库
 git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git ../extra-package/sirpdboy-package
