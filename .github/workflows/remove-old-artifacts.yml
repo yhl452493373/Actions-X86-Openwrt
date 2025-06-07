@@ -5,6 +5,7 @@ on:
     # Every day at 1am
     - cron: '0 1 * * *'
   repository_dispatch:
+  workflow_dispatch:
 
 jobs:
   remove-old-artifacts:
