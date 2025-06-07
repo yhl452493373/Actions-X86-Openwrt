@@ -76,16 +76,16 @@ fi
 
 # 如果启用npc，进行相应配置
 if [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; then
-  sed -i "s|uci -q set npc.@npc[0].enable='0'|uci -q set npc.@npc[0].enable='1'|g" files/etc/uci-defaults/1000-default-settings
-  sed -i "s|uci -q set npc.@npc[0].server_addr=''|uci -q set npc.@npc[0].server_addr='${NPC_SERVER}:${NPC_PORT}'|g" files/etc/uci-defaults/1000-default-settings
-  sed -i "s|uci -q set npc.@npc[0].protocol='tcp'|uci -q set npc.@npc[0].protocol='${NPC_PROTOCOL}'|g" files/etc/uci-defaults/1000-default-settings
-  sed -i "s|uci -q set npc.@npc[0].vkey=''|uci -q set npc.@npc[0].vkey='${NPC_VKEY}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.@npc\[0\].enable='0'|uci -q set npc.@npc\[0\].enable='1'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.@npc\[0\].server_addr=''|uci -q set npc.@npc\[0\].server_addr='${NPC_SERVER}:${NPC_PORT}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.@npc\[0\].protocol='tcp'|uci -q set npc.@npc\[0\].protocol='${NPC_PROTOCOL}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.@npc\[0\].vkey=''|uci -q set npc.@npc\[0\].vkey='${NPC_VKEY}'|g" files/etc/uci-defaults/1000-default-settings
 fi
 
 # 输出文件内容
 echo "以下为初次启动时执行的脚本"
 # 有vkey，则隐藏，没有则原样输出
-sed -E "s|(uci -q set npc\.@npc[0]\.vkey=')[^']+(')|\1已隐藏\2|g" files/etc/uci-defaults/1000-default-settings
+sed -E "s|(uci -q set npc\.@npc\[0\]\.vkey=')[^']+(')|\1已隐藏\2|g" files/etc/uci-defaults/1000-default-settings
 
 # 修改编译信息
 sed -i 's|%D %V, %C|%D %V, %C, Build by YangHuanglin|g' package/base-files/files/etc/banner

@@ -223,6 +223,7 @@ jobs:
         with:
           name: Openwrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: openwrt/bin
+          retention-days: 30
 
       - name: 清理多余文件
         id: organize
@@ -239,3 +240,4 @@ jobs:
         with:
           name: Openwrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: ${{ env.FIRMWARE }}
+          retention-days: 30

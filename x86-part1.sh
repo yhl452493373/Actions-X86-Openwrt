@@ -32,14 +32,14 @@ rm -rf feeds/luci/applications/luci-app-poweroffdevice
 #git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-package/luci-theme-argon
 git clone https://github.com/yhl452493373/luci-theme-argon.git package/extra-package/luci-theme-argon
 
-# kenzok8的jell库
-git clone --depth 1 https://github.com/kenzok8/jell.git ../extra-package/jell
+# kiddin9的kwrt-packages库
+git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git ../extra-package/kiddin9
 # 定时重启
-cp -r ../extra-package/jell/luci-app-autoreboot package/extra-package/luci-app-autoreboot
+cp -r ../extra-package/kiddin9/luci-app-autoreboot package/extra-package/luci-app-autoreboot
 # 关机
-cp -r ../extra-package/jell/luci-app-poweroffdevice package/extra-package/luci-app-poweroffdevice
+cp -r ../extra-package/kiddin9/luci-app-poweroffdevice package/extra-package/luci-app-poweroffdevice
 # 文件管理
-cp -r ../extra-package/jell/luci-app-fileassistant package/extra-package/luci-app-fileassistant
+cp -r ../extra-package/kiddin9/luci-app-fileassistant package/extra-package/luci-app-fileassistant
 
 # NPS内网穿透的客户端NPC
 git clone https://github.com/djylb/nps-openwrt.git package/extra-package/nps-openwrt

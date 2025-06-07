@@ -221,6 +221,7 @@ jobs:
         with:
           name: Lede_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: lede/bin
+          retention-days: 30
 
       - name: 清理多余文件
         id: organize
@@ -237,3 +238,4 @@ jobs:
         with:
           name: Lede_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: ${{ env.FIRMWARE }}
+          retention-days: 30
