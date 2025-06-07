@@ -29,13 +29,8 @@ rm -rf feeds/luci/applications/luci-app-fileassistant
 rm -rf feeds/luci/applications/luci-app-poweroffdevice
 
 # argon主题
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-package/luci-theme-argon
-#git clone https://github.com/yhl452493373/luci-theme-argon.git package/extra-package/luci-theme-argon
-
-# sirpdboy的sirpdboy-package库
-git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git ../extra-package/sirpdboy-package
-# 文件管理，不能和sirpdboy-package里面的luci-app-advanced一起安装
-cp -r ../extra-package/sirpdboy-package/luci-app-fileassistant package/extra-package/luci-app-fileassistant
+#git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-package/luci-theme-argon
+git clone https://github.com/yhl452493373/luci-theme-argon.git package/extra-package/luci-theme-argon
 
 # kenzok8的jell库
 git clone --depth 1 https://github.com/kenzok8/jell.git ../extra-package/jell
@@ -43,10 +38,11 @@ git clone --depth 1 https://github.com/kenzok8/jell.git ../extra-package/jell
 cp -r ../extra-package/jell/luci-app-autoreboot package/extra-package/luci-app-autoreboot
 # 关机
 cp -r ../extra-package/jell/luci-app-poweroffdevice package/extra-package/luci-app-poweroffdevice
+# 文件管理
+cp -r ../extra-package/jell/luci-app-fileassistant package/extra-package/luci-app-fileassistant
 
 # NPS内网穿透的客户端NPC
-git clone https://github.com/yhl452493373/npc.git package/extra-package/npc
-git clone https://github.com/yhl452493373/luci-app-npc.git package/extra-package/luci-app-npc
+git clone https://github.com/djylb/nps-openwrt.git package/extra-package/nps-openwrt
 
 # OpenClash，此处使用开发版
 git clone -b dev --depth 1 https://github.com/vernesong/OpenClash.git package/extra-package/luci-app-openclash
