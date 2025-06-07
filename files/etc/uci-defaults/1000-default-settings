@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#ssh不绑定接口
+uci -q delete dropbear.@dropbear[0].Interface
+uci commit dropbear
+
 #重新配置nginx，不强制使用https
 uci -q delete nginx._lan
 uci -q delete nginx._redirect2ssl
@@ -81,13 +85,9 @@ uci -q set openclash.config.dashboard_forward_port='9090'
 uci commit openclash
 
 #NPS内网穿透服务
-uci -q set npc.config.protocol='tcp'
-uci -q set npc.config.compress='1'
-uci -q set npc.config.crypt='1'
-uci -q set npc.config.log_level='4'
-uci -q set npc.config.auto_reconnection='true'
-uci -q set npc.config.enabled='0'
-uci -q set npc.config.server_addr=''
-uci -q set npc.config.server_port=''
-uci -q set npc.config.vkey=''
+uci -q set npc.@npc[0].enable='0'
+uci -q set npc.@npc[0].server_addr=''
+uci -q set npc.@npc[0].protocol='tcp'
+uci -q set npc.@npc[0].vkey=''
+uci -q set npc.@npc[0].dns=''
 uci commit npc
