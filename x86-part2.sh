@@ -90,6 +90,9 @@ sed -E "s|(uci -q set npc\.@npc\[0\]\.vkey=')[^']+(')|\1已隐藏\2|g" files/etc
 # 修改编译信息
 sed -i 's|%D %V, %C|%D %V, %C, Build by YangHuanglin|g' package/base-files/files/etc/banner
 
+# 修复 Rust 编译失败
+sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
+
 # 创建OpenClash使用的clash二进制文件所在的路径
 mkdir -p files/etc/openclash/core
 # 设置Clash下载地址变量
