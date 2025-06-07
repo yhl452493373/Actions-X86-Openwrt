@@ -24,7 +24,8 @@ sed -i "s|ssl === '1' ? 'https' : 'http'|ssl === '1' ? 'https' : location.protoc
 sed -i 's|msgstr "OpenClash"|msgstr "科学上网"|g' package/extra-package/luci-app-openclash/luci-app-openclash/po/zh-cn/openclash.zh-cn.po
 
 # luci-app-npc
-sed -i '/msgid "Nps Client"/i\msgid "Npc"\nmsgstr "NPS穿透"\n' package/extra-package/luci-app-npc/po/zh_Hans/npc.po
+sed -i 's|msgstr "NPS 内网穿透客户端"|msgstr "NPS穿透"|g' package/extra-package/nps-openwrt/luci-app-npc/po/zh-cn/npc.po
+sed -i 's|msgstr "NPS 内网穿透客户端"|msgstr "NPS穿透"|g' package/extra-package/nps-openwrt/luci-app-npc/po/zh_Hans/npc.po
 
 # 调整应用在菜单中的位置
 # samba4 移动到 服务 中
@@ -75,17 +76,16 @@ fi
 
 # 如果启用npc，进行相应配置
 if [[ "${NPC_SERVER}" != "" && "${NPC_PORT}" != "" && "${NPC_VKEY}" != "" ]]; then
-  sed -i "s|uci -q set npc.config.protocol='tcp'|uci -q set npc.config.protocol='${NPC_PROTOCOL}'|g" files/etc/uci-defaults/1000-default-settings
-  sed -i "s|uci -q set npc.config.enabled='0'|uci -q set npc.config.enabled='1'|g" files/etc/uci-defaults/1000-default-settings
-  sed -i "s|uci -q set npc.config.server_addr=''|uci -q set npc.config.server_addr='${NPC_SERVER}'|g" files/etc/uci-defaults/1000-default-settings
-  sed -i "s|uci -q set npc.config.server_port=''|uci -q set npc.config.server_port='${NPC_PORT}'|g" files/etc/uci-defaults/1000-default-settings
-  sed -i "s|uci -q set npc.config.vkey=''|uci -q set npc.config.vkey='${NPC_VKEY}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.@npc[0].enable='0'|uci -q set npc.@npc[0].enable='1'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.@npc[0].server_addr=''|uci -q set npc.@npc[0].server_addr='${NPC_SERVER}:${NPC_PORT}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.@npc[0].protocol='tcp'|uci -q set npc.@npc[0].protocol='${NPC_PROTOCOL}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q set npc.@npc[0].vkey=''|uci -q set npc.@npc[0].vkey='${NPC_VKEY}'|g" files/etc/uci-defaults/1000-default-settings
 fi
 
 # 输出文件内容
 echo "以下为初次启动时执行的脚本"
 # 有vkey，则隐藏，没有则原样输出
-sed -E "s|(uci -q set npc\.config\.vkey=')[^']+(')|\1已隐藏\2|g" files/etc/uci-defaults/1000-default-settings
+sed -E "s|(uci -q set npc\.@npc[0]\.vkey=')[^']+(')|\1已隐藏\2|g" files/etc/uci-defaults/1000-default-settings
 
 # 修改编译信息
 sed -i 's|%D %V, %C|%D %V, %C, Build by YangHuanglin|g' package/base-files/files/etc/banner
