@@ -51,7 +51,7 @@ fi
 
 # 修改LAN口默认IP
 if [[ "${LAN_IP}" != "" ]]; then
-  sed -i "s|uci -q set network.lan.ipaddr='192.168.2.1'|uci -q set network.lan.ipaddr='${LAN_IP}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|uci -q add_list network.lan.ipaddr='192.168.2.1|uci -q add_list network.lan.ipaddr='${LAN_IP}|g" files/etc/uci-defaults/1000-default-settings
 fi
 
 # WAN口是否启用防火墙

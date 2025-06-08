@@ -54,7 +54,8 @@ uci -q set network.wan6.device='eth0'
 #uci -q set network.wan.netmask='255.255.255.0'
 #uci -q set network.wan.dns='223.5.5.5 114.114.114.114'
 #修改lan口配置
-uci -q set network.lan.ipaddr='192.168.2.1'
+uci -q delete network.lan.ipaddr
+uci -q add_list network.lan.ipaddr='192.168.2.1/24'
 uci -q delete network.@device[0].ports
 uci -q add_list network.@device[0].ports='eth1'
 uci -q add_list network.@device[0].ports='eth2'
@@ -62,7 +63,6 @@ uci -q add_list network.@device[0].ports='eth3'
 uci -q add_list network.@device[0].ports='eth4'
 uci -q add_list network.@device[0].ports='eth5'
 uci commit network
-/etc/init.d/network restart
 
 #修改防火墙，允许WAN口入栈和转发
 #uci -q set firewall.@defaults[0].output='ACCEPT'
