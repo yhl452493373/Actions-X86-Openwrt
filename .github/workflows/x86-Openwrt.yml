@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build x86 Lede with Kernel 6.12
+name: Build x86 Openwrt
 
 on:
   # schedule:
@@ -81,11 +81,11 @@ on:
         required: false
         default: ''
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede.git
-  REPO_BRANCH: master
-  RELEASE_PREFIX: Lede
+  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_BRANCH: main
+  RELEASE_PREFIX: Openwrt
   FEEDS_CONF: feeds.conf
-  CONFIG_FILE: x86.lede.testing.config
+  CONFIG_FILE: x86.config
   DIY_P1_SH: x86-part1.sh
   DIY_P2_SH: x86-part2.sh
   DISTFEEDS: distfeeds.conf
@@ -104,9 +104,11 @@ jobs:
         run: |
           docker rmi $(docker images -q)
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-          sudo apt update -y
-          sudo apt full-upgrade -y
-          sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache clang cmake cpio curl device-tree-compiler flex gawk gcc-multilib g++-multilib gettext genisoimage git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev libssl-dev libtool llvm lrzsz msmtp ninja-build p7zip p7zip-full patch pkgconf python3 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+          sudo -E apt-get -qq update
+          sudo -E apt-get -qq full-upgrade
+          sudo -E apt-get -qq install ack antlr3 asciidoc autoconf libfuse-dev automake autopoint binutils bison build-essential bzip2 ccache clang cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+          sudo -E apt-get -qq autoremove --purge
+          sudo -E apt-get -qq clean
           sudo timedatectl set-timezone "$TZ"
 
       - name: 最大化可用磁盘空间
@@ -119,30 +121,30 @@ jobs:
       - name: 检出项目代码
         uses: actions/checkout@main
 
-      - name: 克隆 Lede 源码
+      - name: 克隆 Openwrt 源码
         run: |
           df -hT $GITHUB_WORKSPACE
           echo Start cloning...
-          git clone $REPO_URL -b $REPO_BRANCH lede
+          git clone $REPO_URL -b $REPO_BRANCH openwrt
           echo Clone finished.
 
       - name: 载入自定义 Feeds
         run: |
           echo Start loading customize feeds...
-          [ -e $FEEDS_CONF ] && mv $FEEDS_CONF lede/feeds.conf.default
+          [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
           echo Load customize feeds finished.
 
       - name: 更新 Feeds
         run: |
           echo Start updating feeds...
-          cd lede
+          cd openwrt
           ./scripts/feeds update -a
           echo Update feeds finished.
 
       - name: 安装 Feeds
         run: |
           echo Start installing feeds...
-          cd lede
+          cd openwrt
           ./scripts/feeds install -a
           echo Install feeds finished.
 
@@ -150,22 +152,22 @@ jobs:
         run: |
           echo Start executing script...
           chmod +x $DIY_P1_SH
-          cd lede 
+          cd openwrt 
           $GITHUB_WORKSPACE/$DIY_P1_SH
           echo Execute script finished.
 
       - name: 载入自定义配置
         run: |
           echo Start loading config...
-          [ -e files ] && mv files lede/files
-          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE lede/.config
+          [ -e files ] && mv files openwrt/files
+          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
           echo Load config finished.
 
       - name: 设置初次启动脚本可执行权限
         run: |
           echo Start authorizing script...
-          [ -e lede/files/etc/uci-defaults ] && chmod +x -R lede/files/etc/uci-defaults/
-          [ -e lede/files/etc/uci-defaults ] && ls -l lede/files/etc/uci-defaults/
+          [ -e openwrt/files/etc/uci-defaults ] && chmod +x -R openwrt/files/etc/uci-defaults/
+          [ -e openwrt/files/etc/uci-defaults ] && ls -l openwrt/files/etc/uci-defaults/
           echo Authorize script finished.
 
       - name: 运行自定义脚本2
@@ -185,14 +187,14 @@ jobs:
         run: |
           echo Start executing script...
           chmod +x $DIY_P2_SH
-          cd lede
+          cd openwrt
           $GITHUB_WORKSPACE/$DIY_P2_SH
           echo Execute script finished.
 
       - name: 下载所需文件
         id: package
         run: |
-          cd lede
+          cd openwrt
           echo Start downloading...
           make defconfig
           make download -j$(nproc)
@@ -201,7 +203,7 @@ jobs:
       - name: 编译固件
         id: compile
         run: |
-          cd lede
+          cd openwrt
           echo Start compiling...
           echo -e "$(nproc) thread compile"
           make -j$(nproc) || make -j1 || make -j1 V=s
@@ -219,15 +221,15 @@ jobs:
         uses: actions/upload-artifact@main
         if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
         with:
-          name: Lede_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-          path: lede/bin
+          name: Openwrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+          path: openwrt/bin
           retention-days: 30
 
       - name: 清理多余文件
         id: organize
         if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
         run: |
-          cd lede/bin/targets/*/*
+          cd openwrt/bin/targets/*/*
           rm -rf packages
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
@@ -236,6 +238,6 @@ jobs:
         uses: actions/upload-artifact@main
         if: steps.organize.outputs.status == 'success' && !cancelled()
         with:
-          name: Lede_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+          name: Openwrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: ${{ env.FIRMWARE }}
           retention-days: 30
