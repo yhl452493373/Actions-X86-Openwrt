@@ -97,7 +97,7 @@ sed -i 's|--set=llvm\.download-ci-llvm=true|--set=llvm\.download-ci-llvm=false|g
 mkdir -p files/etc/openclash/core
 # 设置Clash下载地址变量
 # 从github上指定分支的文件中下载
-CLASH_SMART_URL=$( curl -sL https://api.github.com/repos/vernesong/OpenClash/contents/dev/smart?ref=core | grep smart/clash-linux-amd64.tar.gz | awk -F '"' '{print $4}' | awk 'NR==4{print}' )
+CLASH_SMART_URL=$( curl -sL https://api.github.com/repos/vernesong/OpenClash/contents/dev/smart?ref=core | grep smart/clash-linux-amd64-v2.tar.gz | awk -F '"' '{print $4}' | awk 'NR==4{print}' )
 #CLASH_META_URL=$( curl -sL https://api.github.com/repos/vernesong/OpenClash/contents/dev/meta?ref=core | grep meta/clash-linux-amd64.tar.gz | awk -F '"' '{print $4}' | awk 'NR==4{print}' )
 # 下载并解压OpenClash的执行文件
 wget -qO- $CLASH_SMART_URL | tar xOvz > files/etc/openclash/core/clash_meta
