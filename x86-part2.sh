@@ -24,6 +24,7 @@ sed -i "s|ssl === '1' ? 'https' : 'http'|ssl === '1' ? 'https' : location.protoc
 sed -i 's|msgstr "OpenClash"|msgstr "科学上网"|g' package/extra-package/luci-app-openclash/luci-app-openclash/po/zh-cn/openclash.zh-cn.po
 
 # luci-app-npc
+sed -i 's|#LUCI_DEPENDS:=+npc|LUCI_DEPENDS:=+npc|g' package/extra-package/nps-openwrt/luci-app-npc/Makefile
 sed -i 's|msgstr "NPS 内网穿透客户端"|msgstr "NPS穿透"|g' package/extra-package/nps-openwrt/luci-app-npc/po/zh-cn/npc.po
 sed -i 's|msgstr "NPS 内网穿透客户端"|msgstr "NPS穿透"|g' package/extra-package/nps-openwrt/luci-app-npc/po/zh_Hans/npc.po
 
