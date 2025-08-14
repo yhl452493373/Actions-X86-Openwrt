@@ -67,6 +67,7 @@ fi
 # 修改ttyd默认端口
 if [[ "${TTYD_PORT}" != "" ]]; then
   sed -i "s|uci set ttyd.@ttyd\[0\].port='7681'|uci set ttyd.@ttyd\[0\].port='${TTYD_PORT}'|g" files/etc/uci-defaults/1000-default-settings
+  sed -i "s|127.0.0.1:7681|127.0.0.1:${TTYD_PORT}|g" files/etc/nginx/conf.d/ttyd.locations
 fi
 
 # 修改OpenClash默认端口
