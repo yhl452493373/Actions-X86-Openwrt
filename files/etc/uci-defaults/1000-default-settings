@@ -4,30 +4,6 @@
 uci -q delete dropbear.@dropbear[0].Interface
 uci commit dropbear
 
-#重新配置nginx，不强制使用https
-uci -q delete nginx._lan
-uci -q delete nginx._redirect2ssl
-uci -q set nginx._lan=server
-uci -q set nginx._lan.server_name='_lan'
-uci -q set nginx._lan.access_log='off; # logd openwrt'
-uci -q set nginx._ssl=server
-uci -q set nginx._ssl.server_name='_ssl'
-uci -q set nginx._ssl.uci_manage_ssl='self-signed'
-uci -q set nginx._ssl.access_log='off; # logd openwrt'
-uci -q set nginx._ssl.ssl_certificate='/etc/nginx/conf.d/_lan.crt'
-uci -q set nginx._ssl.ssl_certificate_key='/etc/nginx/conf.d/_lan.key'
-uci -q set nginx._ssl.ssl_session_cache='shared:SSL:32k'
-uci -q set nginx._ssl.ssl_session_timeout='64m'
-uci -q add_list nginx._lan.listen='80 default_server'
-uci -q add_list nginx._lan.listen='[::]:80 default_server'
-uci -q add_list nginx._ssl.listen='443 ssl'
-uci -q add_list nginx._ssl.listen='[::]:443 ssl'
-uci -q add_list nginx._lan.include='restrict_locally'
-uci -q add_list nginx._lan.include='conf.d/*.locations'
-uci -q add_list nginx._ssl.include='restrict_locally'
-uci -q add_list nginx._ssl.include='conf.d/*.locations'
-uci commit nginx
-
 #修改主题
 uci -q set luci.main.mediaurlbase=/luci-static/argon
 uci commit luci
@@ -76,6 +52,7 @@ uci commit network
 #ttyd网页终端允许wan口访问以及设置端口
 #uci -q delete ttyd.@ttyd[0].interface
 uci set ttyd.@ttyd[0].port='7681'
+uci set ttyd.@ttyd[0].url_override='/ttyd'
 uci commit ttyd
 
 #openclash允许wan口连接代理端口及设置管理页面端口
