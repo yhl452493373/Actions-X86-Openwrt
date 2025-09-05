@@ -40,6 +40,7 @@ cp -r ../extra-package/kiddin9/luci-app-autoreboot package/extra-package/luci-ap
 cp -r ../extra-package/kiddin9/luci-app-poweroffdevice package/extra-package/luci-app-poweroffdevice
 # 文件管理
 cp -r ../extra-package/kiddin9/luci-app-fileassistant package/extra-package/luci-app-fileassistant
+sed -i 's/^\(PKG_VERSION:=.*\)-/\1./' package/extra-package/luci-app-fileassistant/Makefile
 
 # NPS内网穿透的客户端NPC
 git clone https://github.com/djylb/nps-openwrt.git package/extra-package/nps-openwrt
