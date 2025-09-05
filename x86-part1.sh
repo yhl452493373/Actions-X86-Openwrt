@@ -33,7 +33,10 @@ rm -rf feeds/luci/applications/luci-app-poweroffdevice
 git clone https://github.com/yhl452493373/luci-theme-argon.git package/extra-package/luci-theme-argon
 
 # kiddin9的kwrt-packages库
-git clone --depth 1 https://github.com/kiddin9/kwrt-packages.git ../extra-package/kiddin9
+git clone https://github.com/kiddin9/kwrt-packages.git ../extra-package/kiddin9
+# 文件管理版本回退，否则无法上传文件
+git -C ../extra-package/kiddin9 checkout f312cf1 -- luci-app-fileassistant
+
 # 定时重启
 cp -r ../extra-package/kiddin9/luci-app-autoreboot package/extra-package/luci-app-autoreboot
 # 关机
