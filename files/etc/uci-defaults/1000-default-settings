@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#删除不需要的软件包
+apk del -r luci-app-attendedsysupgrade
+apk del -r attendedsysupgrade-common
+
 #ssh不绑定接口
 uci -q delete dropbear.@dropbear[0].Interface
 uci commit dropbear
