@@ -33,7 +33,7 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/extra-packag
 #git clone https://github.com/yhl452493373/luci-theme-argon.git package/extra-package/luci-theme-argon
 
 # kiddin9的kwrt-packages库
-git clone https://github.com/kiddin9/kwrt-packages.git ../extra-package/kiddin9
+git clone https://github.com/kiddin9/op-packages.git ../extra-package/kiddin9
 # 文件管理版本回退，否则无法上传文件
 git -C ../extra-package/kiddin9 checkout f312cf1 -- luci-app-fileassistant
 
